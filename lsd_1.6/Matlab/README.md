@@ -11,6 +11,7 @@ If you want to use the lsd program :
 You can now use the function lsd within matlab
 
 Type :
-  >lsd help
-within Matlab to understand how to use it.
+  > help lsd  
+
+in Matlab to understand how to use it.  
 *Paul-Darius Sarmadi - July 2014*
