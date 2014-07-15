@@ -1,7 +1,7 @@
-Welcome to the matlab version of the LSD algorithm
+Matlab version of the LSD algorithm
 ==============
 
-LSD PROGRAM :
+LSD Program :
 --------------
 
 If you want to use the lsd program :
