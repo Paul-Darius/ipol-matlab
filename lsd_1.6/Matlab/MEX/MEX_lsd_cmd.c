@@ -1,4 +1,14 @@
 /*----------------------------------------------------------------------------
+  
+  Matlab Interface to LSD
+
+  Copyright (c) 2014 Paul-Darius Sarmadi <paul-darius.sarmadi@telecom-sudparis.eu>
+
+  Based on lsd_cmd.c, a file developed by Rafael Grompone <grompone@gmail.com>
+
+----------------------------------------------------------------------------*/
+
+/*----------------------------------------------------------------------------
 
   LSD - Line Segment Detector on digital images
 
@@ -1088,12 +1098,7 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     double density_th=0.7;
     int n_bins=1024;
     double width=1.5;
-    /*
-    double eps=0;
-    double svg=0;
-    char* epsfile[200];
-    char* svgfile[200];
-    */
+
     double* ptr;
     if (nrhs==2)
     {
@@ -1219,68 +1224,6 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
             mexErrMsgTxt("The n_bins value is not acceptable. For more information, type \"help lsd\"");
           }
         }
-/* More code I could eventually add :
-
-        if ( strcmp(mxGetFieldNameByNumber(prhs[1],tmp),"eps")==0)
-        {
-          if (!mxIsDouble(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0))))
-          {
-            mexErrMsgTxt("A double argument was expected.");
-          }
-          if (!mxGetNumberOfElements((mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0)))))
-          {
-            mexErrMsgTxt("Only one value was expected.");
-          }
-          ptr=mxGetPr(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],tmp)));
-          eps=ptr[0];
-        }
-
-        if ( strcmp(mxGetFieldNameByNumber(prhs[1],tmp),"svg")==0)
-        {
-          if (!mxIsDouble(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0))))
-          {
-            mexErrMsgTxt("A double argument was expected.");
-          }
-          if (!mxGetNumberOfElements((mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0)))))
-          {
-            mexErrMsgTxt("Only one value was expected.");
-          }
-          ptr=mxGetPr(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],tmp)));
-          svg=ptr[0];
-        }
-
-        if ( strcmp(mxGetFieldNameByNumber(prhs[1],tmp),"width")==0)
-        {
-          if (!mxIsDouble(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0))))
-          {
-            mexErrMsgTxt("A double argument was expected.");
-          }
-          if (!mxGetNumberOfElements((mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0)))))
-          {
-            mexErrMsgTxt("Only one value was expected.");
-          }
-          ptr=mxGetPr(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],tmp)));
-          width=ptr[0];
-        }
-
-        if ( strcmp(mxGetFieldNameByNumber(prhs[1],tmp),"epsfile")==0)
-        {
-          if (!mxIsChar(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0))))
-          {
-            mexErrMsgTxt("A string argument was expected.");
-          }
-          ptr=mxGetString(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],tmp)));
-          epsfile=ptr[0];
-        }
-        if ( strcmp(mxGetFieldNameByNumber(prhs[1],tmp),"svgfile")==0)
-        {
-          if (!mxIsChar(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],0))))
-          {
-            mexErrMsgTxt("A string argument was expected.");
-          }
-          ptr=mxGetString(mxGetField(prhs[1],0,mxGetFieldNameByNumber(prhs[1],tmp)));
-          svgfile=ptr[0];
-        } */
 
       }
     }
@@ -1306,44 +1249,30 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
                                NULL,
                                &regX, &regY );
       /* The output which is created here will be an array */
-      int taille;
-      for (taille=0;segs[taille];taille++);
       mwSize *dims;
-      plhs[0]=mxCreateDoubleMatrix(taille/dim,dim,mxREAL);
+      plhs[0]=mxCreateDoubleMatrix(n,dim,mxREAL);
       double* pointeur=(double*)mxGetPr(plhs[0]);
       int z=0;
-      for(z=0;z<taille/dim;z++)
+      for(z=0;z<n;z++)
       {
         for(j=0;j<dim;j++)
         {
-          pointeur[z+j*(taille/dim)]=segs[z*dim+j];
+          pointeur[z+j*n]=segs[z*dim+j];
         }
       }
       z=0;
       j=0;
-      for(z=0;z<taille/dim;z++)
+      for(z=0;z<n;z++)
       {
         for(j=0;j<dim;j++)
         {
-        double c=pointeur[z+3*(taille/dim)];
-        pointeur[z+3*(taille/dim)]=pointeur[z];
+        double c=pointeur[z+3*n];
+        pointeur[z+3*n]=pointeur[z];
         pointeur[z]=c;
-        c=pointeur[z+2*(taille/dim)];
-        pointeur[z+2*(taille/dim)]=pointeur[z+(taille/dim)];
-        pointeur[z+(taille/dim)]=c;
+        c=pointeur[z+2*n];
+        pointeur[z+2*n]=pointeur[z+n];
+        pointeur[z+n]=c;
         }
       }
-      /*
-      if (eps!=0)
-      {
-        write_eps(segs,n,dim,epsfile,X,Y,width);
-      }
-      if (svg!=0)
-      {
-        write_svg(segs,n,dim,svgfile,X,Y,width);
-      }
-      
-      free( (void *) image );
-      free( (void *) segs );*/
   } 
 }
