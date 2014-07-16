@@ -8,11 +8,11 @@ If you want to use the lsd program :
 
 >compileMex
 
-You can now use the function lsd within matlab
+You can now use the lsd function within matlab
 
 Type :
   > help lsd  
 
-in Matlab to understand how to use it.  
+in Matlab to see how it works.  
   
 *Paul-Darius Sarmadi - July 2014*
