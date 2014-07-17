@@ -74,7 +74,7 @@
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
-#include "matrix.h"
+#include "mex.h"
 #include "../../lsd.h"
 
 #ifndef FALSE
