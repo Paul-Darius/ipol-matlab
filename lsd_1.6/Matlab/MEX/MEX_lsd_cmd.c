@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------
   
-  Matlab Interface to LSD
+  Matlab wrapper for LSD
 
   Copyright (c) 2014 Paul-Darius Sarmadi <paul-darius.sarmadi@telecom-sudparis.eu>
 
