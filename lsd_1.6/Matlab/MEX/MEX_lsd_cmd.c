@@ -68,14 +68,18 @@
       Line Segment output (each ascii line: x1,y1,x2,y2,width,p,-log10(NFA) )  \
 "
 /*----------------------------------------------------------------------------*/
-
+typedef uint16_t char16_t;
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
-#include "matrix.h"
+//#include "matrix.h"
 #include "../../lsd.h"
+
+
+
+#include "mex.h"
 
 #ifndef FALSE
 #define FALSE 0
