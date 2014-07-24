@@ -1,4 +1,4 @@
-## Matlab version of the LSD algorithm
+## Matlab wrapper for LSD
 
 ### LSD Program :
 

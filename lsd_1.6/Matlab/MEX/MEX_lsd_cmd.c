@@ -1,6 +1,6 @@
 /*----------------------------------------------------------------------------
   
-  Matlab Interface to LSD
+  Matlab wrapper for LSD
 
   Copyright (c) 2014 Paul-Darius Sarmadi <paul-darius.sarmadi@telecom-sudparis.eu>
 
@@ -74,7 +74,11 @@ typedef uint16_t char16_t;
 #include <math.h>
 #include <string.h>
 #include <ctype.h>
+<<<<<<< HEAD
 //#include "matrix.h"
+=======
+#include "mex.h"
+>>>>>>> 19e7c17fbd1ff4354306551aad7d0f07a4db4c63
 #include "../../lsd.h"
 
 
