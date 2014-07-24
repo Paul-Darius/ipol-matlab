@@ -1,3 +1,4 @@
+typedef char* char16_t;
 #include <matrix.h>
 #include <math.h>
 #include "mex.h"

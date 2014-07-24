@@ -1,5 +1,5 @@
 function out=lsd(image,option)
-% LSD  return an array containing datas concerning line segments detected
+% LSD  returns an array containing datas concerning line segments detected
 % in an image
 %   out = LSD(A) returns line segments belonging to A
 %
