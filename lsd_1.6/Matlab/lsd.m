@@ -1,4 +1,4 @@
-function out=lsd(image,option)
+function out=lsd(image,option,normalize_image)
 % LSD  returns an array containing datas concerning line segments detected
 % in an image
 %   out = LSD(A) returns line segments belonging to A
@@ -89,8 +89,24 @@ function out=lsd(image,option)
 %   The fourth column contains y2
 %   The three last columns contain other informations available at the following adress :
 %   http://www.ipol.im/pub/art/2012/gjmr-lsd/
-    if (~exist('option', 'var'))
-        out=MEX_lsd_cmd(image);
-    else
-        out=MEX_lsd_cmd(image,option);
-    end
+%
+% NOTE: think to modify the mex because it does not handle colors. Images
+% have to be renormalized
+
+if(~ismatrix(image))
+    image=rgb2gray(image);
+end
+
+if(nargin<3)
+    normalize_image=1;
+end
+
+if(normalize_image)
+    image=floor(256*image/max(max(image)));
+end
+
+if (~exist('option', 'var'))
+    out=MEX_lsd_cmd(image);
+else
+    out=MEX_lsd_cmd(image,option);
+end
