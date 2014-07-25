@@ -1,8 +1,7 @@
 X=double(imread('input.png'));
-X=floor(256*X/max(max(max(X))));% IL FAUT QUE L'IMAGE SOIT ENTRE 0 ET 255(pas 0 et 1)
-% IL FAUT QUE L'IMAGE SOIT EN NIVEAU DE GRIS
-% Vérifier que des inputs un peu aléatoires ne font pas planter le soft(en
-% entrée, une image en couleur double(ie NxMx3) fait planter le soft)
+X=floor(256*X/max(max(max(X))));
+% The image has to be between 0 and 255.
+% The image has to be black and white
 output_lsd=lsd(X);
 figure,
 hold on
