@@ -1,0 +1,9 @@
+digraph G
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="target_histogram",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="gaussian",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#a15e129755aaa88181e227d5c8fc85cf5",tooltip="Evaluate the Gaussian function at x with std-dev sigma."];
+}

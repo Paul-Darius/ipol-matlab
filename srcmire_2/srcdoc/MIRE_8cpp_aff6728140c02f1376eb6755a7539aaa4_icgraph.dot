@@ -1,0 +1,11 @@
+digraph G
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="TV_column_norm",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="MIRE_automatic",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#a0c2ec7eb8434fa21dd2e186b7ade0976",tooltip="Compute the TV of MIRE-processed image for a set of parameter sigma namely (SIGMA_MIN:DELTA:SIGMA_MAX..."];
+  Node2 -> Node3 [dir=back,color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="main",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$demo__MIRE_8cpp.html#a5ea466849f21e6c2be4ef9b2eb8868d3",tooltip="main function"];
+}

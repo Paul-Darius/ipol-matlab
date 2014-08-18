@@ -1,0 +1,1 @@
+mex MEX/MEX_demo_MIRE.cpp ../borders.cpp ../MIRE.cpp

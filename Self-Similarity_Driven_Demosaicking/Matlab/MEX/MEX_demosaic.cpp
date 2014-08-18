@@ -1,4 +1,4 @@
-#/*
+/*
 * Copyright (c) 2009-2011, A. Buades <toni.buades@uib.es>
 * All rights reserved.
 *  
@@ -153,33 +153,18 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     /* copy alpha channel */
     memcpy(data_out + 3 * nx * ny, data_in + 3 * nx * ny,
 		   nx * ny * sizeof(float));
-	
-    plhs[0]=mxCreateDoubleMatrix(nx,ny,mxREAL);
-      double* pointeur=(double*)mxGetPr(plhs[0]);
-      int z=0;
-      for(z=0;z<nx;z++)
-      {
-        for(j=0;j<ny;j++)
-        {
-          pointeur[z+j*nx]=data_out[z*ny+j];
-        }
-      }
-      /*
-      z=0;
-      j=0;
-      for(z=0;z<nx;z++)
-      {
-        for(j=0;j<ny;j++)
-        {
-        double c=pointeur[z+3*nx];
-        pointeur[z+3*nx]=pointeur[z];
-        pointeur[z]=c;
-        c=pointeur[z+2*nx];
-        pointeur[z+2*nx]=pointeur[z+nx];
-        pointeur[z+nx]=c;
-        }
-      }
-    free(data_in);
-    free(data_out); */
-}
+
+	mwSize dim = 3;
+    const mwSize dims[3]={ny,nx,3};
+    plhs[0]=mxCreateNumericArray(dim, dims, mxDOUBLE_CLASS, mxREAL);
+    double* pointeur=(double*)mxGetPr(plhs[0]);
+    int k=0;
+    for (k=0;k<3 * nx * ny;k++)
+    {
+        pointeur[k]=(double)data_out[k];
+        printf("%f %lf\n", data_out[k], pointeur[k]);
+    }
+
+    free(pattern_str);
+    }  
 }

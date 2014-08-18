@@ -128,24 +128,38 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 	    channel[i + nx * j] *= mask_G[(i % 2) + 2 * (j % 2)];
     }
     }
+    //mexErrMsgTxt("Bonjour");
     // blue channel
     channel = image + 2 * nx * ny;
     
     for (j = 0; j < ny; j++)
 	for (i = 0; i < nx; i++)
 	    channel[i + nx * j] *= mask_B[(i % 2) + 2 * (j % 2)];
-
     /* output */
-    mwSize dim = 3;
-    const mwSize dims[3]={ny,nx,3};
-    plhs[0]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
-    double* pointeur=(double*)mxGetPr(plhs[0]);
-    channel=image;
-    int k=0;
-    for (k=0;k<3*nx*ny;k++)
-    {
-        pointeur[k]=channel[k];
-    }
+    plhs[0]=mxCreateDoubleMatrix(nx,ny,mxREAL);
+      double* pointeur=(double*)mxGetPr(plhs[0]);
+      int z=0;
+      for(z=0;z<nx;z++)
+      {
+        for(j=0;j<ny;j++)
+        {
+          pointeur[z+j*nx]=channel[z*ny+j];
+        }
+      }
+      z=0;
+      j=0;
+      for(z=0;z<nx;z++)
+      {
+        for(j=0;j<ny;j++)
+        {
+        double c=pointeur[z+3*nx];
+        pointeur[z+3*nx]=pointeur[z];
+        pointeur[z]=c;
+        c=pointeur[z+2*nx];
+        pointeur[z+2*nx]=pointeur[z+nx];
+        pointeur[z+nx]=c;
+        }
+      }
     free(buf);
     }
 }

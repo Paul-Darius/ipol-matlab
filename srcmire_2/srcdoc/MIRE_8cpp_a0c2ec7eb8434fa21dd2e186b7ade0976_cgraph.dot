@@ -1,0 +1,21 @@
+digraph G
+{
+  edge [fontname="FreeSans",fontsize="10",labelfontname="FreeSans",labelfontsize="10"];
+  node [fontname="FreeSans",fontsize="10",shape=record];
+  rankdir=LR;
+  Node1 [label="MIRE_automatic",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled" fontcolor="black"];
+  Node1 -> Node2 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node2 [label="MIRE",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#a3d9d516cf01ecf20f4a514810074ba29",tooltip="Performs the MIRE algorithm with parameter sigma."];
+  Node2 -> Node3 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node3 [label="column_sorting",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#aff41f3ce0b6f8235bd451350376d67f5",tooltip="Sort all columns of the image."];
+  Node3 -> Node4 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node4 [label="histo_column",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#a70117cb1b43ee1d0ea10808fc934ab7e",tooltip="Take the column N°column, put it in a vertor and sort it."];
+  Node2 -> Node5 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node5 [label="specify_column",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#a458efbc41c7db71486f19ef5de9221ee",tooltip="Given the vector containing the target value. Specify he column on theses values Implemented in 2 ste..."];
+  Node2 -> Node6 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node6 [label="target_histogram",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#aeb8afee8be12b10649e04b5e5f968013",tooltip="Compute the target vector (~ histogram) Implemented in 3 steps: Step1 : extract columns columns in th..."];
+  Node6 -> Node7 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node7 [label="gaussian",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#a15e129755aaa88181e227d5c8fc85cf5",tooltip="Evaluate the Gaussian function at x with std-dev sigma."];
+  Node1 -> Node8 [color="midnightblue",fontsize="10",style="solid",fontname="FreeSans"];
+  Node8 [label="TV_column_norm",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$MIRE_8cpp.html#aff6728140c02f1376eb6755a7539aaa4",tooltip="Compute TV-norm among colums (avoids the parts added by symetrization)."];
+}

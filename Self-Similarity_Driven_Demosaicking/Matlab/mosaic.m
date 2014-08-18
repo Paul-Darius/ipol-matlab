@@ -7,7 +7,7 @@ function out=mosaic(image,string)
 %
 % The image must be a double matrix.
 % To load it from an image on your computer use the following command :
-% image=double(imread('adress/of/file.pgm'))
+% image=im2double(imread('adress/of/file.pgm'))
 %
 % INPUT 2 :
 % =========
