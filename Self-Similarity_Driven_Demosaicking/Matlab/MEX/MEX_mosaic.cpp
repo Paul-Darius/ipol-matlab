@@ -55,6 +55,7 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     }
     else
     {
+       /* TODO: Better use  mxGetDimensions */ 
     int nx=mxGetN(prhs[0])/3;
     int ny=mxGetM(prhs[0]);
     int mask_R[4] = {0, 0, 0, 0};
