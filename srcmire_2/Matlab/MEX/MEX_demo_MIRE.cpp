@@ -94,11 +94,10 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     float* Image= new float[w1*h1];
     int tmp=0;
     mexPrintf("%d %d", w1,h1);
-    for (tmp=0;tmp<w1*h1;tmp++)
-    {
-        Image[tmp]=/*(float)*/(mxGetPr(prhs[0]))[tmp];
-    }
-    
+	 int tmpx, tmpy;
+    for (tmpx=0; tmpx<w1; tmpx++) 
+       for (tmpy=0; tmpy<h1; tmpy++) 
+	 	   Image[tmpx+tmpy*w1] = (float)(mxGetPr(prhs[0]))[tmpy+tmpx*h1];
     
     mexPrintf("coucou");
 
@@ -186,11 +185,11 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     const mwSize dims[2]={h1,w1};
     plhs[0]=mxCreateNumericArray(dim, dims, mxDOUBLE_CLASS, mxREAL);
     double* pointeur=(double*)mxGetPr(plhs[0]);
-    int k=0;
-    for (k=0;k< w1 * h1;k++)
-    {
-        pointeur[k]=(double)Image[k];
-    }
+    for (tmpy=0; tmpy<h1; tmpy++) 
+       for (tmpx=0; tmpx<w1; tmpx++) 
+       {
+      	   pointeur[tmpy+tmpx*h1]=(double)Image[tmpx+tmpy*w1];
+       }
 
     delete [] Image;
 
