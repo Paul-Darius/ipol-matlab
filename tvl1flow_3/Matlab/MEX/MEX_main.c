@@ -160,23 +160,24 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 #endif//DISABLE_OMP
 */
 
-	int    nx = mxGetN(prhs[0])/3;
+   // TODO: CHECK THAT number of Channels is 1!!!
+
+	int    nx = mxGetN(prhs[0]);
 	int    ny = mxGetM(prhs[0]);
-	int    nx2 = mxGetN(prhs[1])/3;
+	int    nx2 = mxGetN(prhs[1]);
 	int    ny2 = mxGetM(prhs[1]);
 	mexPrintf("%d %d", mxGetN(prhs[0]), nx);
-	float *I0=malloc(3*nx*ny*sizeof(float));
-	int tmp=0;
-	for (tmp=0; tmp<3*nx*ny; tmp++)
-	{	
-		I0[tmp] = (float)(mxGetPr(prhs[0]))[tmp];
-	}
-	float *I1=malloc(3*nx2*ny2*sizeof(float));
-	tmp=0;
-	for (tmp=0; tmp<3*nx2*ny2; tmp++)
-	{	
-		I0[tmp] = (float)(mxGetPr(prhs[1]))[tmp];
-	}
+	float *I0=malloc(nx*ny*sizeof(float));
+	int tmpx, tmpy;
+   for (tmpx=0; tmpx<nx; tmpx++) 
+      for (tmpy=0; tmpy<ny; tmpy++) 
+		   I0[tmpx+tmpy*nx] = (float)(mxGetPr(prhs[0]))[tmpy+tmpx*ny];
+
+	float *I1=malloc(nx2*ny2*sizeof(float));
+   for (tmpx=0; tmpx<nx2; tmpx++) 
+      for (tmpy=0; tmpy<ny2; tmpy++) 
+		   I1[tmpx+tmpy*nx] = (float)(mxGetPr(prhs[1]))[tmpy+tmpx*ny];
+
 		if (nx == nx2 && ny == ny2)
 	{
 
@@ -196,6 +197,7 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		float *v = u + nx*ny;
 
 		mexPrintf("%d %d\n", nx, nx2);
+		mexPrintf("%d %d\n", ny, ny2);
 
 		Dual_TVL1_optic_flow_multiscale(
 				I0, I1, u, v, nx, ny, tau, lambda, theta,
@@ -205,16 +207,15 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 
 		//iio_save_image_float_split(outfile, u, nx, ny, 2);
 		mwSize dim = 3;
-    	const mwSize dims[3]={ny,nx,3};
+    	const mwSize dims[3]={ny,nx,2};
     	plhs[0]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
     	double* pointeur=(double*)mxGetPr(plhs[0]);
-    	int k=0;
-    	for (k=0;k<3*nx*ny;k++)
-    	{
-        	//pointeur[k]=(double)u[k];
-        	//mexPrintf("%e\n", u[k]);
-
-    	}
+      for (tmpy=0; tmpy<ny; tmpy++) 
+         for (tmpx=0; tmpx<nx; tmpx++) 
+         {
+        	   pointeur[tmpy+tmpx*ny + 0    ]=(double)u[tmpx+tmpy*nx];
+        	   pointeur[tmpy+tmpx*ny + nx*ny]=(double)v[tmpx+tmpy*nx];
+         }
 		free(I0);
 		free(I1);
 		free(u);
