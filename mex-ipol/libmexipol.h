@@ -50,7 +50,7 @@ char* get_string(mxArray* prhsi);
 // (...) using the variable message (...)
 // free(message);
 
-void set_string(char* message, int i);
+void set_string(char* message, mxArray* prhsi);
 
 // Input : a char* string, element of prhs
 // Output : none

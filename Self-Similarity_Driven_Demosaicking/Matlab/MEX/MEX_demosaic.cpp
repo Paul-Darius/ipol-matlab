@@ -99,7 +99,7 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     status = mxGetString(prhs[1], pattern_str, (mwSize)buflen);
 
     unsigned char redx, redy;
-    float *data_in, *data_out;
+    float *data_out;
     float *out_ptr, *end_ptr;
 	
     /* pattern */
@@ -130,8 +130,13 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     }
 
     /* TIFF RGBA 8bit->float input */
-    data_in = (float *) mxGetPr(prhs[0]);
-    data_out = (float *) malloc(sizeof(float) * nx * ny * 4);
+    float* data_in= new float[nx*ny*3];
+    int tmpx, tmpy, tmpz;
+    for (tmpz=0;tmpz<3;tmpz++)
+        for (tmpx=0; tmpx<nx; tmpx++)
+            for (tmpy=0; tmpy<ny; tmpy++)
+                data_in[tmpx+tmpy*nx+tmpz*nx*ny] = (float)(mxGetPr(prhs[0]))[tmpy+tmpx*ny+tmpz*nx*ny];
+    data_out = (float *) malloc(sizeof(float) * nx * ny * 3);
 
     /* process */	
 	ssd_demosaicking_chain(redx, redy,
@@ -151,20 +156,19 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		out_ptr++;
     }
     /* copy alpha channel */
-    memcpy(data_out + 3 * nx * ny, data_in + 3 * nx * ny,
-		   nx * ny * sizeof(float));
+    //memcpy(data_out + 3 * nx * ny, data_in + 3 * nx * ny,nx * ny * sizeof(float));
 
-	mwSize dim = 3;
-    const mwSize dims[3]={ny,nx,3};
-    plhs[0]=mxCreateNumericArray(dim, dims, mxDOUBLE_CLASS, mxREAL);
-    double* pointeur=(double*)mxGetPr(plhs[0]);
-    int k=0;
-    for (k=0;k<3 * nx * ny;k++)
-    {
-        pointeur[k]=(double)data_out[k];
-        printf("%f %lf\n", data_out[k], pointeur[k]);
-    }
-
+        mwSize dim = 3;
+        const mwSize dims[3]={ny,nx,3};
+        plhs[0]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
+        double* pointeur=(double*)mxGetPr(plhs[0]);
+        for (tmpz=0;tmpz<3;tmpz++)
+            for (tmpy=0; tmpy<ny; tmpy++)
+                for (tmpx=0; tmpx<nx; tmpx++)
+                {
+                    pointeur[tmpy+tmpx*ny+tmpz*nx*ny]=(double)data_out[tmpx+tmpy*nx+tmpz*nx*ny];
+                }
+    free(data_out);
     free(pattern_str);
-    }  
+    }
 }

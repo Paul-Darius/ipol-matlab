@@ -31,6 +31,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <iostream>
 #include <string.h>
 
 #include "mex.h"
@@ -104,49 +105,49 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
         mexErrMsgTxt("The second argument must be \"RGGB\", \"GRBG\", \"GBRG\" or \"BGGR\"\n");
     }
 
-    double * image=mxGetPr(prhs[0]);
+    float* image= new float[nx*ny*3];
+    int tmpx, tmpy, tmpz;
+    for (tmpz=0;tmpz<3;tmpz++)
+        for (tmpx=0; tmpx<nx; tmpx++)
+            for (tmpy=0; tmpy<ny; tmpy++)
+                image[tmpx+tmpy*nx+tmpz*nx*ny] = (float)(mxGetPr(prhs[0]))[tmpy+tmpx*ny+tmpz*nx*ny];
     /*
      * process the RGB channels by multiplication the input pixel
      * values by a 2x2 mask
      */
-    double *channel;
+    float *channel;
     channel = image;
 
     /* red channel */
-    for (j = 0; j < ny; j++)
-	for (i = 0; i < nx; i++)
-	    channel[i + nx * j] *= mask_R[(i % 2) + 2 * (j % 2)];
-
-
-    /* green channel */
-
-    channel = image + nx * ny;
-
-    for (j = 0; j < ny; j++)
-	{
-    for (i = 0; i < nx; i++)
-    {
-	    channel[i + nx * j] *= mask_G[(i % 2) + 2 * (j % 2)];
-    }
-    }
-    // blue channel
-    channel = image + 2 * nx * ny;
-    
-    for (j = 0; j < ny; j++)
-	for (i = 0; i < nx; i++)
-	    channel[i + nx * j] *= mask_B[(i % 2) + 2 * (j % 2)];
+        for (j = 0; j < ny; j++)
+            for (i = 0; i < nx; i++)
+                channel[i + nx * j] *= mask_R[(i % 2) + 2 * (j % 2)];
+        
+        /* green channel */
+        channel = image + nx * ny;
+        for (j = 0; j < ny; j++)
+            for (i = 0; i < nx; i++)
+                channel[i + nx * j] *= mask_G[(i % 2) + 2 * (j % 2)];
+        
+        /* blue channel */
+        channel = image + 2 * nx * ny;
+        for (j = 0; j < ny; j++)
+            for (i = 0; i < nx; i++)
+                channel[i + nx * j] *= mask_B[(i % 2) + 2 * (j % 2)];
 
     /* output */
     mwSize dim = 3;
     const mwSize dims[3]={ny,nx,3};
     plhs[0]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
     double* pointeur=(double*)mxGetPr(plhs[0]);
-    channel=image;
-    int k=0;
-    for (k=0;k<3*nx*ny;k++)
-    {
-        pointeur[k]=channel[k];
-    }
+    for (tmpz=0;tmpz<3;tmpz++)
+        for (tmpy=0; tmpy<ny; tmpy++)
+            for (tmpx=0; tmpx<nx; tmpx++)
+            {
+                pointeur[tmpy+tmpx*ny+tmpz*nx*ny]=(double)image[tmpx+tmpy*nx+tmpz*nx*ny];
+            }
+
+    delete [] image;
     free(buf);
     }
 }

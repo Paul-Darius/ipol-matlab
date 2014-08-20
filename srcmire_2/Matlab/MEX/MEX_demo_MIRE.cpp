@@ -93,13 +93,11 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     
     float* Image= new float[w1*h1];
     int tmp=0;
-    mexPrintf("%d %d", w1,h1);
 	 int tmpx, tmpy;
     for (tmpx=0; tmpx<w1; tmpx++) 
        for (tmpy=0; tmpy<h1; tmpy++) 
 	 	   Image[tmpx+tmpy*w1] = (float)(mxGetPr(prhs[0]))[tmpy+tmpx*h1];
-    
-    mexPrintf("coucou");
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //////////////DEALING WITH BORDER EFFECTS: MIRROR symmetry ON COLUMNS////////////
