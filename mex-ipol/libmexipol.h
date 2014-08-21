@@ -1,3 +1,15 @@
+/*! \file libmexipol.h
+    \brief A cool file.
+    
+    Details.
+*/
+    /*! \fn size_t write(int fd,const char *buf, size_t count)
+    \brief Writes \a count bytes from \a buf to the filedescriptor \a fd.
+    \param fd The descriptor to write to.
+    \param buf The data buffer to write.
+    \param count The number of bytes to write.
+*/
+
 #ifdef __APPLE__
 typedef char* char16_t;
 #endif
@@ -10,11 +22,18 @@ typedef char* char16_t;
 /* input/output handling */
 
 
+/** \brief Input : number of output, number of output required, number of input, number of input required
+ *		   Output : None.
+ *	       Other informations : Prints an error message if the number is not the one required.
+*/
 void numberio(int nlhs, int i, int nrhs, int j);
 
-// Input : number of output, number of output required, number of input, number of input required
-// Output : None.
-// Other informations : Prints an error message if the number is not the one required.
+/**
+       * A pure virtual member.
+       * @see testMe()
+       * @param c1 the first argument.
+       * @param c2 the second argument.
+       */
 
 void type(char *type, const mxArray *prhs[], int i);
 
@@ -101,6 +120,7 @@ void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
 
 /* Structure functions */
 
+// The structure must be a made of double values.
 struct getStruct {
 	char* name;
 	double value;
@@ -111,3 +131,11 @@ typedef struct getStruct getStruct;
 getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
 
 void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields);
+
+// Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.
+//int n;
+//getStruct* structure=get_structure_malloc(prhs[0], &n);
+//set_structure(structure, plhs,0, n);
+//free(structure);
+
+
