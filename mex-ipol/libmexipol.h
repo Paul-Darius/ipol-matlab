@@ -108,8 +108,6 @@ struct getStruct {
 
 typedef struct getStruct getStruct;
 
-getStruct* get_structure(const mxArray* prhsi, int *numb_fields);
+getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
 
-void set_structure(getStruct* structure, const mxArray* plhs, int numb_fields);
-
-
+void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields);

@@ -228,7 +228,7 @@ void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArra
 /* Struct functions */
 
 
-getStruct* get_structure(const mxArray* prhsi, int *numb_fields)
+getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields)
 {
     if (!mxIsStruct(prhsi))
     {
@@ -241,19 +241,34 @@ getStruct* get_structure(const mxArray* prhsi, int *numb_fields)
     {
         structure[k].name=malloc(sizeof(char)*strlen(mxGetFieldNameByNumber(prhsi,k)));
         structure[k].name=mxGetFieldNameByNumber(prhsi,k);
-        structure[k].value=mxGetPr(mxGetField(prhsi,0,mxGetFieldNameByNumber(prhsi,k)));
+        structure[k].value=(mxGetPr(mxGetField(prhsi,0,mxGetFieldNameByNumber(prhsi,k))))[0];
     }
     return structure;
 }
 
-void set_structure(getStruct* structure, const mxArray* plhs, int numb_fields)
+void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields)
 {   
     int k=0;
+    char **field_names=malloc(sizeof(char*)*numb_fields);
     for (k=0;k<numb_fields;k++)
     {
-        mxArray* value = mxCreateDoubleMatrix(1,1,mxREAL);
-        double* pointer = (double*)mxGetPr(value);
-        pointer[0]=structure[k].value;
-        mxSetField(plhsi,0,structure[k].name,pointer);
+        field_names[k]=malloc(sizeof(char)*numb_fields);
+        field_names[k]=structure[k].name;
     }
+    for (k=0;k<numb_fields;k++)
+    {
+        mwSize dim = 1;
+        const mwSize dims[1]={1};
+        mxArray* valeur =mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
+        double* pointer = (double*)mxGetPr(valeur);
+        pointer[0]=(double)structure[k].value;
+        mexPrintf("%s=%e",structure[k].name,pointer[0]);
+        plhs[i]=mxCreateStructArray(dim, dims, num_fields, field_names);
+        mxSetField(plhs[i],0,structure[k].name,valeur);
+    }
+    for (k = 0; k < numb_fields; k++)
+    {
+        free(field_names[k]);
+    }
+    free(field_names);
 }
