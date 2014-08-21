@@ -252,7 +252,7 @@ void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_
     char **field_names=malloc(sizeof(char*)*numb_fields);
     for (k=0;k<numb_fields;k++)
     {
-        field_names[k]=malloc(sizeof(char)*numb_fields);
+        field_names[k]=malloc(sizeof(char)*(strlen(structure[k].name)+1));
         field_names[k]=structure[k].name;
     }
     for (k=0;k<numb_fields;k++)
@@ -263,12 +263,8 @@ void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_
         double* pointer = (double*)mxGetPr(valeur);
         pointer[0]=(double)structure[k].value;
         mexPrintf("%s=%e",structure[k].name,pointer[0]);
-        plhs[i]=mxCreateStructArray(dim, dims, num_fields, field_names);
+        plhs[i]=mxCreateStructArray(dim, dims, numb_fields, field_names);
         mxSetField(plhs[i],0,structure[k].name,valeur);
-    }
-    for (k = 0; k < numb_fields; k++)
-    {
-        free(field_names[k]);
     }
     free(field_names);
 }
