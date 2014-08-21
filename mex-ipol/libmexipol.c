@@ -100,4 +100,68 @@ void set_string(char* message, mxArray* prhsi)
 {
     prhsi=mxCreateString(message);
 }
-/* */
+
+/* Array functions */
+
+void imageMatlabToC(mxArray* prhsi, int number_of_channels, float* image)
+{
+    if (number_of_channels<1)
+    {
+        mexErrMsgTxt("Ask the programmer of this soft to clear up this issue");
+    }
+    else
+    {
+        int nx, ny;
+        if (number_of_channels==1)
+        {
+            nx=mxGetN(prhsi);
+            ny=mxGetM(prhsi);
+        }
+        else
+        {
+            nx=mxGetN(prhsi)/number_of_channels;
+            ny=mxGetM(prhsi);
+        }
+        int tmpx, tmpy, tmpz;
+        for (tmpz=0;tmpz<number_of_channels;tmpz++)
+            for (tmpx=0; tmpx<nx; tmpx++)
+                for (tmpy=0; tmpy<ny; tmpy++)
+                    image[tmpx+tmpy*nx+tmpz*nx*ny] = (float)(mxGetPr(prhsi))[tmpy+tmpx*ny+tmpz*nx*ny];
+    }
+}
+
+void imageCToMatlab(float* image, int number_of_channels, mxArray *plhsi)
+{
+    if (number_of_channels<1)
+    {
+        mexErrMsgTxt("Ask the programmer of this soft to clear up this issue");
+    }
+    else
+    {
+        mwSize dim;
+        
+        int nx, ny;
+        if (number_of_channels==1)
+        {
+            dim = 2;
+            nx=mxGetN(plhsi);
+            ny=mxGetM(plhsi);
+        }
+        else
+        {
+            dim = 3;
+            //dims[3]={ny,nx,number_of_channels};
+            nx=mxGetN(plhsi)/number_of_channels;
+            ny=mxGetM(plhsi);
+        }
+        const mwSize dims[3]={ny,nx,number_of_channels};
+        plhsi=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
+        double* pointeur=(double*)mxGetPr(plhsi);
+        int tmpx,tmpy,tmpz;
+        for (tmpz=0;tmpz<number_of_channels;tmpz++)
+            for (tmpy=0; tmpy<ny; tmpy++)
+                for (tmpx=0; tmpx<nx; tmpx++)
+                    pointeur[tmpy+tmpx*ny+tmpz*nx*ny]=(double)image[tmpx+tmpy*nx+tmpz*nx*ny];
+    }
+    
+}

@@ -56,6 +56,23 @@ void set_string(char* message, mxArray* prhsi);
 // Output : none
 // Other informations : the function sets the value of plhs[i] as the
 
+
+/* Array functions */
+
+
+void imageMatlabToC(mxArray* prhsi, int number_of_channels, float* image);
+
+// input : prhs[i] you get the image from,
+//
+//
+
+void imageCToMatlab(float* image, int number_of_channels, mxArray *plhsi);
+
+//
+//
+//
+
+
 /* Structure functions */
 
 void get_structure(const mxArray* prhsi, char* array[]); // if data is type double we have to convert string to double
