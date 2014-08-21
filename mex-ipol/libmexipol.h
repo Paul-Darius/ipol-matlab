@@ -59,23 +59,57 @@ void set_string(char* message, mxArray* prhsi);
 
 /* Array functions */
 
+float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
 
-void imageMatlabToC(mxArray* prhsi, int number_of_channels, float* image);
+// Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Thos are used by the majority of C-programs
+// input : prhs[i] you get the image from, number of column, number of rows, number of channels
+// output :  pointer to the first element of the array.
+// Other information : You must free the pointer when you do not need it anymore.
 
-// input : prhs[i] you get the image from,
+void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i);
+
+// Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Thos are used by the majority of C-programs
+// input : an array that must be allocated, number of column, number of rows, number of channels, plhs, element number of plhs you want to take the image from
+// output : none
+// Other information : the array "image" contains now the required informations.
+
+void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
+
+
+// Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Thos are used by the majority of C-programs
+// input : an array that must be allocated, number of column, number of rows, number of channels, plhs, element number of plhs you want to take the image from
+// output : none
+// Other information : the array "image" contains now the required informations.
+
+
+// Now, let's see an example on how to use it. I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include "libmexipol.h"
 //
 //
-
-void imageCToMatlab(float* image, int number_of_channels, mxArray *plhsi);
-
-//
-//
-//
-
+//void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+//{
+//    int nx, ny, nz;
+//    float *image = imageMatlabToC_malloc(prhs[0],&nx,&ny,&nz);
+//	  //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
+//	  //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
+//    imageCToMatlab(image, nx, ny, nz, plhs,0);
+//    free(image);
+//}
 
 /* Structure functions */
 
-void get_structure(const mxArray* prhsi, char* array[]); // if data is type double we have to convert string to double
-void send_double_array(double* array, const mxArray* plhsi); // send a double array to an element from the structure
-void send_matrix(double* array, int num_col, int num_row, const mxArray* plhsi);
-void send_string_array(char* array, const mxArray* plhsi);
+struct getStruct {
+	char* name;
+	double value;
+};
+
+typedef struct getStruct getStruct;
+
+getStruct* get_structure(const mxArray* prhsi, &numb_fields);
+
+void set_structure(getStruct* structure, const mxArray* plhs, int numb_fields)
+
+

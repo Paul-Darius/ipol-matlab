@@ -1,3 +1,4 @@
+
 //
 //  libmexipol.c
 //  
@@ -103,7 +104,7 @@ void set_string(char* message, mxArray* prhsi)
 
 /* Array functions */
 
-void imageMatlabToC(mxArray* prhsi, int number_of_channels, float* image)
+void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image)
 {
     if (number_of_channels<1)
     {
@@ -116,21 +117,69 @@ void imageMatlabToC(mxArray* prhsi, int number_of_channels, float* image)
         {
             nx=mxGetN(prhsi);
             ny=mxGetM(prhsi);
+            int tmpx, tmpy;
+            mexPrintf("1");
+            for (tmpx=0; tmpx<nx; tmpx++)
+                for (tmpy=0; tmpy<ny; tmpy++)
+                    image[tmpx+tmpy*nx] = (float)(mxGetPr(prhsi))[tmpy+tmpx*ny];
+            mexPrintf("2");
         }
-        else
+        else if (number_of_channels>1)
         {
             nx=mxGetN(prhsi)/number_of_channels;
             ny=mxGetM(prhsi);
+            int tmpx, tmpy, tmpz;
+            mexPrintf("3");
+
+            for (tmpz=0;tmpz<number_of_channels;tmpz++)
+            {
+                mexPrintf("tmpz: %d\n",tmpz);
+                for (tmpx=0; tmpx<nx; tmpx++)
+                {
+                    mexPrintf("tmpx: %d\n",tmpx);
+
+                    for (tmpy=0; tmpy<ny; tmpy++)
+                    {
+                        mexPrintf("tmpy: %d",tmpy);
+
+                        image[tmpx+tmpy*nx+tmpz*nx*ny] = (float)(mxGetPr(prhsi))[tmpy+tmpx*ny+tmpz*nx*ny];
+                    }
+                }
+            }
+            mexPrintf("4");
+
         }
-        int tmpx, tmpy, tmpz;
-        for (tmpz=0;tmpz<number_of_channels;tmpz++)
-            for (tmpx=0; tmpx<nx; tmpx++)
-                for (tmpy=0; tmpy<ny; tmpy++)
-                    image[tmpx+tmpy*nx+tmpz*nx*ny] = (float)(mxGetPr(prhsi))[tmpy+tmpx*ny+tmpz*nx*ny];
     }
 }
 
-void imageCToMatlab(float* image, int number_of_channels, mxArray *plhsi)
+float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)
+{
+    int num=mxGetNumberOfDimensions(prhsi);
+    *nx = mxGetDimensions(prhsi)[0];
+    *ny = mxGetDimensions(prhsi)[1];
+    *nz = mxGetDimensions(prhsi)[2];
+    int tmpx, tmpy, tmpz;
+    float* image=malloc((*nx)*(*ny)*(*nz)*sizeof(float));
+    mexPrintf("3");
+    for (tmpz=0;tmpz<*nz;tmpz++)
+    {
+        mexPrintf("tmpz: %d\n",tmpz);
+        for (tmpx=0; tmpx<*nx; tmpx++)
+        {
+            mexPrintf("tmpx: %d\n",tmpx);
+            for (tmpy=0; tmpy<*ny; tmpy++)
+            {
+                mexPrintf("tmpy: %d",tmpy);
+                image[tmpx+tmpy*(*nx)+tmpz*(*nx)*(*ny)] = (float)(mxGetPr(prhsi))[tmpy+tmpx*(*ny)+tmpz*(*nx)*(*ny)];
+            }
+        }
+    }
+    mexPrintf("4");
+    return image;
+}
+
+
+void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
 {
     if (number_of_channels<1)
     {
@@ -138,30 +187,70 @@ void imageCToMatlab(float* image, int number_of_channels, mxArray *plhsi)
     }
     else
     {
-        mwSize dim;
-        
-        int nx, ny;
         if (number_of_channels==1)
         {
-            dim = 2;
-            nx=mxGetN(plhsi);
-            ny=mxGetM(plhsi);
+            plhs[i]=mxCreateNumericMatrix(ny, nx,mxDOUBLE_CLASS,mxREAL);
+            double* pointeur=(double*)mxGetPr(plhs[i]);
+            int tmpx,tmpy;
+            for (tmpy=0; tmpy<ny; tmpy++)
+                for (tmpx=0; tmpx<nx; tmpx++)
+                    pointeur[tmpy+tmpx*ny]=(double)image[tmpx+tmpy*nx];
         }
         else
         {
-            dim = 3;
-            //dims[3]={ny,nx,number_of_channels};
-            nx=mxGetN(plhsi)/number_of_channels;
-            ny=mxGetM(plhsi);
+            mwSize dim = 3;
+            const mwSize dims[3]={ny,nx,number_of_channels};
+            plhs[i]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
+            double* pointeur=(double*)mxGetPr(plhs[i]);
+            int tmpx,tmpy,tmpz;
+            mexPrintf("\n\n\n\n **** PARTIE 2 **** \n\n\n");
+            for (tmpz=0;tmpz<number_of_channels;tmpz++)
+            {
+                mexPrintf("tmpz: %d\n",tmpz);
+                for (tmpy=0; tmpy<ny; tmpy++)
+                {
+                    mexPrintf("tmpy: %d\n",tmpy);
+
+                    for (tmpx=0; tmpx<nx; tmpx++)
+                    {
+                        mexPrintf("tmpx: %d",tmpx);
+
+                        pointeur[tmpy+tmpx*ny+tmpz*nx*ny]=(double)image[tmpx+tmpy*nx+tmpz*nx*ny];
+                    }
+                }
+            }
         }
-        const mwSize dims[3]={ny,nx,number_of_channels};
-        plhsi=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
-        double* pointeur=(double*)mxGetPr(plhsi);
-        int tmpx,tmpy,tmpz;
-        for (tmpz=0;tmpz<number_of_channels;tmpz++)
-            for (tmpy=0; tmpy<ny; tmpy++)
-                for (tmpx=0; tmpx<nx; tmpx++)
-                    pointeur[tmpy+tmpx*ny+tmpz*nx*ny]=(double)image[tmpx+tmpy*nx+tmpz*nx*ny];
     }
     
+}
+
+
+/* Struct functions */
+
+
+getStruct* get_structure(const mxArray* prhsi, &numb_fields)
+{
+    if (!mxIsStruct(prhsi))
+    {
+        mexErrMsgTxt("Ask the programmer of this soft to clear up this issue");
+    }
+    numb_fields = mxGetNumberOfFields(prhsi);
+    getStruct* structure = malloc(numb_fields*sizeof(getStruct));
+    int k=0;
+    for (k=0;k<numb_fields;k++)
+    {
+        structure[k].name=malloc(sizeof(char)*strlen(mxGetFieldNameByNumber(prhsi,k)));
+        structure[k].name=mxGetFieldNameByNumber(prhsi,k);
+        structure[k].value=mxGetPr(mxGetField(prhsi,0,mxGetFieldNameByNumber(prhsi,k)));
+    }
+    return structure;
+}
+
+void set_structure(getStruct* structure, const mxArray* plhs, int numb_fields)
+{   
+    int k=0;
+    for (k=0;k<numb_fields;k++)
+    {
+        mxSetField(plhsi,0,structure[k].name,structure[k].value);
+    }
 }
