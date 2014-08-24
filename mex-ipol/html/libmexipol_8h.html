@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -88,7 +88,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 
-<p>A cool file.  
+<p>Mexipol's functions.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br/>
 <code>#include &lt;stdlib.h&gt;</code><br/>
@@ -110,29 +110,45 @@ typedef struct <a class="el" href="structget_struct.html">getStruct</a>&#160;</t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae72d5e0e7e50eb5dcc088382e99c6198"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a> (int nlhs, int i, int nrhs, int j)</td></tr>
-<tr class="memdesc:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Input : number of output, number of output required, number of input, number of input required Output : None. Other informations : Prints an error message if the number is not the one required. <br/></td></tr>
+<tr class="memitem:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a> (int nlhs, int i, int nrhs, int j)</td></tr>
+<tr class="memdesc:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : Prints an error message if the number of output or the number of input is not the required one.<br/>
+ Output : None.<br/>
+  <a href="#ae72d5e0e7e50eb5dcc088382e99c6198">More...</a><br/></td></tr>
 <tr class="separator:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a818bed1ae54cbe668e903a9abbb56d94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a> (char *type, const mxArray *prhs[], int i)</td></tr>
+<tr class="memdesc:a818bed1ae54cbe668e903a9abbb56d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : Prints an error message if the type is not the one required.<br/>
+ Output : None.<br/>
+  <a href="#a818bed1ae54cbe668e903a9abbb56d94">More...</a><br/></td></tr>
 <tr class="separator:a818bed1ae54cbe668e903a9abbb56d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a69ebb7b18a6be8045de978f1d45fc1ef"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>isCorrectString</b> (char *requiredString, mxArray *prhsi)</td></tr>
+<tr class="memitem:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a> (char *requiredString, mxArray *prhsi)</td></tr>
+<tr class="memdesc:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : The goal is to compare a string to an element of prhs which must be a string.<br/>
+ Output : O if the strings are different. 1 if they are the same.<br/>
+  <a href="#a69ebb7b18a6be8045de978f1d45fc1ef">More...</a><br/></td></tr>
 <tr class="separator:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a82cbbaa1a290babbbe2decbbdb8fa28a"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>get_string_length</b> (mxArray *prhsi)</td></tr>
+<tr class="memitem:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a> (mxArray *prhsi)</td></tr>
+<tr class="memdesc:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output :Size of the string.<br/>
+<br/>
+ Typical code :<br/>
+ char <em>message = malloc(sizeof(char)</em>(get_string_length(prhs[X])+1));<br/>
+ message = get_string(prhs[X]);<br/>
+ (...) using the variable message (...)<br/>
+ free(message);<br/>
+  <a href="#a82cbbaa1a290babbbe2decbbdb8fa28a">More...</a><br/></td></tr>
 <tr class="separator:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a78d28a4ce70b112ec9fb2da1b8f9ff4e"></a>
-char *&#160;</td><td class="memItemRight" valign="bottom"><b>get_string</b> (mxArray *prhsi)</td></tr>
+<tr class="memitem:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a78d28a4ce70b112ec9fb2da1b8f9ff4e">get_string</a> (mxArray *prhsi)</td></tr>
+<tr class="memdesc:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output : The string as a char*.<br/>
+  <a href="#a78d28a4ce70b112ec9fb2da1b8f9ff4e">More...</a><br/></td></tr>
 <tr class="separator:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a634fe2523f827ec5fe5683e69ef91d30"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a634fe2523f827ec5fe5683e69ef91d30"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_string</b> (char *message, mxArray *prhsi)</td></tr>
-<tr class="separator:a634fe2523f827ec5fe5683e69ef91d30"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6d4dd67181af024fd30dfc591d5fcb0b"></a>
-float *&#160;</td><td class="memItemRight" valign="bottom"><b>imageMatlabToC_malloc</b> (mxArray *prhsi, int *nx, int *ny, int *nz)</td></tr>
+<tr class="memitem:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a> (char *message, mxArray *plhsi)</td></tr>
+<tr class="memdesc:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output : none Other informations : The function sets the value of plhs[i] as the one of message.  <a href="#a0d2a48c6fb9b786d0920c4b42ef4c27f">More...</a><br/></td></tr>
+<tr class="separator:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a> (mxArray *prhsi, int *nx, int *ny, int *nz)</td></tr>
+<tr class="memdesc:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ Output : Pointer to the first element of the array.  <a href="#a6d4dd67181af024fd30dfc591d5fcb0b">More...</a><br/></td></tr>
 <tr class="separator:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4647d56b75168001168fbabef0cec64b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4647d56b75168001168fbabef0cec64b"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>imageCToMatlab</b> (float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</td></tr>
+<tr class="memitem:a4647d56b75168001168fbabef0cec64b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a> (float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</td></tr>
+<tr class="memdesc:a4647d56b75168001168fbabef0cec64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ Output : Pointer to the first element of the array.  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
 <tr class="separator:a4647d56b75168001168fbabef0cec64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63149697b437f7fcfc7fa92313a454ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63149697b437f7fcfc7fa92313a454ea"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>imageMatlabToC</b> (mxArray *prhsi, int number_of_channels, float *image)</td></tr>
@@ -145,9 +161,303 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 <tr class="separator:a7ba6d09740d38588448d89cc68a48866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>A cool file. </p>
-<p>Details. </p>
+<div class="textblock"><p>Mexipol's functions. </p>
+<dl class="section author"><dt>Author</dt><dd>Paul-Darius Sarmadi </dd></dl>
+<dl class="section version"><dt>Version</dt><dd>1.0 </dd></dl>
+<dl class="section date"><dt>Date</dt><dd>August 21, 2014</dd></dl>
+<p>This .h document contains all the mexipol's functions prototypes. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a78d28a4ce70b112ec9fb2da1b8f9ff4e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* get_string </td>
+          <td>(</td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>prhsi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output : The string as a char*.<br/>
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prhsi</td><td>a string element from prhs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a82cbbaa1a290babbbe2decbbdb8fa28a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_string_length </td>
+          <td>(</td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>prhsi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output :Size of the string.<br/>
+<br/>
+ Typical code :<br/>
+ char <em>message = malloc(sizeof(char)</em>(get_string_length(prhs[X])+1));<br/>
+ message = get_string(prhs[X]);<br/>
+ (...) using the variable message (...)<br/>
+ free(message);<br/>
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">a</td><td>string element from prhs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a4647d56b75168001168fbabef0cec64b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void imageCToMatlab </td>
+          <td>(</td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>image</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>ny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_channels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>plhs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ Output : Pointer to the first element of the array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
+    <tr><td class="paramname">nx</td><td>Pointer to the number of columns. </td></tr>
+    <tr><td class="paramname">ny</td><td>Pointer to the number of rows. </td></tr>
+    <tr><td class="paramname">nz</td><td>Pointer to the number of channels. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a6d4dd67181af024fd30dfc591d5fcb0b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float* imageMatlabToC_malloc </td>
+          <td>(</td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>prhsi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nx</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>ny</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int *&#160;</td>
+          <td class="paramname"><em>nz</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ Output : Pointer to the first element of the array. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
+    <tr><td class="paramname">nx</td><td>Pointer to the number of columns. </td></tr>
+    <tr><td class="paramname">ny</td><td>Pointer to the number of rows. </td></tr>
+    <tr><td class="paramname">nz</td><td>Pointer to the number of channels. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a69ebb7b18a6be8045de978f1d45fc1ef"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int isCorrectString </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>requiredString</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>prhsi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Goal : The goal is to compare a string to an element of prhs which must be a string.<br/>
+ Output : O if the strings are different. 1 if they are the same.<br/>
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">requiredString</td><td>The required string </td></tr>
+    <tr><td class="paramname">prhsi</td><td>The string which is an element of prhs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae72d5e0e7e50eb5dcc088382e99c6198"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void numberio </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nlhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>nrhs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>j</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Goal : Prints an error message if the number of output or the number of input is not the required one.<br/>
+ Output : None.<br/>
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nlhs</td><td>The number of output. </td></tr>
+    <tr><td class="paramname">i</td><td>The number of output required by the algorithm. </td></tr>
+    <tr><td class="paramname">nrhs</td><td>The number of input. </td></tr>
+    <tr><td class="paramname">j</td><td>The number of input required by the algorithm. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a0d2a48c6fb9b786d0920c4b42ef4c27f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_string </td>
+          <td>(</td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>message</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>plhsi</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Output : none Other informations : The function sets the value of plhs[i] as the one of message. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message</td><td>The message you want as an output </td></tr>
+    <tr><td class="paramname">plhsi</td><td>The element of plhs you want as the previous string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a818bed1ae54cbe668e903a9abbb56d94"></a>
 <div class="memitem">
 <div class="memproto">
@@ -177,12 +487,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
         </tr>
       </table>
 </div><div class="memdoc">
-<p>A pure virtual member. </p>
-<dl class="section see"><dt>See Also</dt><dd>testMe() </dd></dl>
+
+<p>Goal : Prints an error message if the type is not the one required.<br/>
+ Output : None.<br/>
+ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">c1</td><td>the first argument. </td></tr>
-    <tr><td class="paramname">c2</td><td>the second argument. </td></tr>
+    <tr><td class="paramname">type</td><td>type required : must be "string" or "double" </td></tr>
+    <tr><td class="paramname">prhs</td><td>The function's prhs </td></tr>
+    <tr><td class="paramname">nrhs</td><td>The number of input. </td></tr>
+    <tr><td class="paramname">j</td><td>The number of input required by the algorithm. </td></tr>
   </table>
   </dd>
 </dl>
@@ -192,7 +506,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Aug 21 2014 22:19:16 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 25 2014 00:54:39 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

@@ -1,14 +1,30 @@
-/*! \file libmexipol.h
-    \brief A cool file.
-    
-    Details.
-*/
-    /*! \fn size_t write(int fd,const char *buf, size_t count)
-    \brief Writes \a count bytes from \a buf to the filedescriptor \a fd.
-    \param fd The descriptor to write to.
-    \param buf The data buffer to write.
-    \param count The number of bytes to write.
-*/
+/*! \mainpage Mexipol library Documentation
+ *
+ * \section intro_sec Introduction
+ *
+ * This is the Mexipol library documentation.
+ *
+ * \section what_sec What is it ?
+ * \section how_to_sec How to use it ?
+ *	To use this library, just copy the libmexipol.h and libmexipol.c files in your project's directory and add them to your project.
+ *
+ * \section copyright Copyright and License
+ *  Copyright (c) 2014 Paul-Darius Sarmadi <sarmadipauldarius@yahoo.fr>
+ *
+ * <BR><BR>
+ *
+ */
+
+
+
+/**
+ * \file      libmexipol.h
+ * \author    Paul-Darius Sarmadi
+ * \version   1.0
+ * \date      August 21, 2014
+ * \brief     Mexipol's functions
+ * \details   This .h document contains all the mexipol's functions prototypes.
+ */
 
 #ifdef __APPLE__
 typedef char* char16_t;
@@ -22,68 +38,98 @@ typedef char* char16_t;
 /* input/output handling */
 
 
-/** \brief Input : number of output, number of output required, number of input, number of input required
- *		   Output : None.
- *	       Other informations : Prints an error message if the number is not the one required.
+/*! \fn void numberio(int nlhs, int i, int nrhs, int j)
+    \brief
+     Goal : Prints an error message if the number of output or the number of input is not the required one.<BR>
+ 	 Output : None.<BR>
+    \param nlhs The number of output.
+    \param i The number of output required by the algorithm.
+    \param nrhs The number of input.
+    \param j The number of input required by the algorithm.
 */
 void numberio(int nlhs, int i, int nrhs, int j);
 
-/**
-       * A pure virtual member.
-       * @see testMe()
-       * @param c1 the first argument.
-       * @param c2 the second argument.
-       */
+/*! \fn void type(char *type, const mxArray *prhs[], int i)
+    \brief
+     Goal : Prints an error message if the type is not the one required.<BR>
+ 	 Output : None.<BR>
+    \param type type required : must be "string" or "double"
+    \param prhs The function's prhs
+    \param nrhs The number of input.
+    \param j The number of input required by the algorithm.
+*/
 
 void type(char *type, const mxArray *prhs[], int i);
 
-// Input : type required, prhs, element number of the prhs
-// Output : None.
-// Other Informations : Prints an error message if the type is not the one required.
-// PS : this function will evolve : must add the struct type.
-// For more possibilities, the function mxIsclass is very useful.
-
+/*! \fn int isCorrectString( char* requiredString, mxArray *prhsi)
+ \brief
+ Goal : The goal is to compare a string to an element of prhs which must be a string.<BR>
+ Output : O if the strings are different. 1 if they are the same.<BR>
+ \param requiredString The required string
+ \param prhsi The string which is an element of prhs
+ */
 int isCorrectString( char* requiredString, mxArray *prhsi);
-
-// Input : string required, string element of prhs
-// Output : 0 if the two strings are differents, 1 if they are the same
 
 
 /* String functions */
 
+/*! \fn int get_string_length(mxArray* prhsi)
+ \brief
+ Output :Size of the string.<BR><BR>
+ Typical code :<BR>
+ char *message = malloc(sizeof(char)*(get_string_length(prhs[X])+1));<BR>
+ message = get_string(prhs[X]);<BR>
+ (...) using the variable message (...)<BR>
+ free(message);<BR>
 
+ \param a string element from prhs
+ */
 
 int get_string_length(mxArray* prhsi);
 
-// Input : a string element of prhs
-// Output : size of the string
+/*! \fn char* get_string(mxArray* prhsi)
+ \brief
+ Output : The string as a char*.<BR>
+ \param prhsi a string element from prhs
+ */
 
 char* get_string(mxArray* prhsi);
 
-// Input : a string element from prhs
-// Output : The string as a char* usable by language C
+/*! \fn set_string(char* message, mxArray* plhsi)
+ \brief
+ Output : none
+ Other informations : The function sets the value of plhs[i] as the one of message.
+ \param message The message you want as an output
+ \param plhsi The element of plhs you want as the previous string.
+ */
 
-// Typical code :
-// char *message = malloc(sizeof(char)*(get_string_length(prhs[X])+1));
-// message = get_string(prhs[X]);
-// (...) using the variable message (...)
-// free(message);
-
-void set_string(char* message, mxArray* prhsi);
-
-// Input : a char* string, element of prhs
-// Output : none
-// Other informations : the function sets the value of plhs[i] as the
+void set_string(char* message, mxArray* plhsi);
 
 
 /* Array functions */
 
+
+/*! \fn float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)
+ \brief
+ Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
+ Output : Pointer to the first element of the array.
+ \param prhsi The element of prhs the user gets the image from.
+ \param nx Pointer to the number of columns.
+ \param ny Pointer to the number of rows.
+ \param nz Pointer to the number of channels.
+ */
+
 float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
 
-// Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Thos are used by the majority of C-programs
-// input : prhs[i] you get the image from, number of column, number of rows, number of channels
-// output :  pointer to the first element of the array.
-// Other information : You must free the pointer when you do not need it anymore.
+/*! \fn void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
+ \brief
+ Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
+ Output : Pointer to the first element of the array.
+ \param prhsi The element of prhs the user gets the image from.
+ \param nx Pointer to the number of columns.
+ \param ny Pointer to the number of rows.
+ \param nz Pointer to the number of channels.
+ */
 
 void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i);
 

@@ -97,7 +97,7 @@ char* get_string(mxArray* prhsi)
     return buf;
 }
 
-void set_string(char* message, mxArray* prhsi)
+void set_string(char* message, mxArray* plhsi)
 {
     prhsi=mxCreateString(message);
 }
