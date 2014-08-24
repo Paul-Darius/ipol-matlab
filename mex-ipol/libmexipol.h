@@ -123,46 +123,47 @@ float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
 
 /*! \fn void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
  \brief
- Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
- Output : Pointer to the first element of the array.
- \param prhsi The element of prhs the user gets the image from.
+ Goal : The function sends a row-major float array as a usable output within Matlab.<BR>
+ Output : None.
+ \param image The float-type image which must be sent to Matlab
  \param nx Pointer to the number of columns.
  \param ny Pointer to the number of rows.
- \param nz Pointer to the number of channels.
+ \param number_of_channels Number of channels of the image.
+ \param plhs The plhs.
+ \param i The element number of the image as an output.
  */
+
 
 void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i);
 
-// Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Thos are used by the majority of C-programs
-// input : an array that must be allocated, number of column, number of rows, number of channels, plhs, element number of plhs you want to take the image from
-// output : none
-// Other information : the array "image" contains now the required informations.
+/*! \fn void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image)
+ \brief
+ Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
+ Output : None.
+ Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable.
+ \param prhsi The element of prhs the user gets the image from.
+ \param nomber_of_channels Number of channels of the image.
+ \param image Pointer to the image which is given by Matlab.
+ // Now, let's see an example on how to use it. I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-
+ 
+ //#include <stdio.h>
+ //#include <stdlib.h>
+ //#include "libmexipol.h"
+ //
+ //
+ //void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+ //{
+ //    int nx, ny, nz;
+ //    float *image = imageMatlabToC_malloc(prhs[0],&nx,&ny,&nz);
+ //	  //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
+ //	  //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
+ //    imageCToMatlab(image, nx, ny, nz, plhs,0);
+ //    free(image);
+ //}
+
+ */
 
 void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
-
-
-// Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Thos are used by the majority of C-programs
-// input : an array that must be allocated, number of column, number of rows, number of channels, plhs, element number of plhs you want to take the image from
-// output : none
-// Other information : the array "image" contains now the required informations.
-
-
-// Now, let's see an example on how to use it. I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-
-
-//#include <stdio.h>
-//#include <stdlib.h>
-//#include "libmexipol.h"
-//
-//
-//void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
-//{
-//    int nx, ny, nz;
-//    float *image = imageMatlabToC_malloc(prhs[0],&nx,&ny,&nz);
-//	  //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
-//	  //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
-//    imageCToMatlab(image, nx, ny, nz, plhs,0);
-//    free(image);
-//}
 
 /* Structure functions */
 

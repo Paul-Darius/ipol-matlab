@@ -147,11 +147,12 @@ Functions</h2></td></tr>
  Output : Pointer to the first element of the array.  <a href="#a6d4dd67181af024fd30dfc591d5fcb0b">More...</a><br/></td></tr>
 <tr class="separator:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4647d56b75168001168fbabef0cec64b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a> (float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</td></tr>
-<tr class="memdesc:a4647d56b75168001168fbabef0cec64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : Pointer to the first element of the array.  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
+<tr class="memdesc:a4647d56b75168001168fbabef0cec64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : The function sends a row-major float array as a usable output within Matlab.<br/>
+ Output : None.  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
 <tr class="separator:a4647d56b75168001168fbabef0cec64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a63149697b437f7fcfc7fa92313a454ea"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a63149697b437f7fcfc7fa92313a454ea"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>imageMatlabToC</b> (mxArray *prhsi, int number_of_channels, float *image)</td></tr>
+<tr class="memitem:a63149697b437f7fcfc7fa92313a454ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a> (mxArray *prhsi, int number_of_channels, float *image)</td></tr>
+<tr class="memdesc:a63149697b437f7fcfc7fa92313a454ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ Output : None. Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable.  <a href="#a63149697b437f7fcfc7fa92313a454ea">More...</a><br/></td></tr>
 <tr class="separator:a63149697b437f7fcfc7fa92313a454ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10713e24500063ed4f910b9aa9b3fbf2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10713e24500063ed4f910b9aa9b3fbf2"></a>
 <a class="el" href="structget_struct.html">getStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_structure_malloc</b> (const mxArray *prhsi, int *numb_fields)</td></tr>
@@ -271,17 +272,64 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : Pointer to the first element of the array. </p>
+<p>Goal : The function sends a row-major float array as a usable output within Matlab.<br/>
+ Output : None. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
+    <tr><td class="paramname">image</td><td>The float-type image which must be sent to Matlab </td></tr>
     <tr><td class="paramname">nx</td><td>Pointer to the number of columns. </td></tr>
     <tr><td class="paramname">ny</td><td>Pointer to the number of rows. </td></tr>
-    <tr><td class="paramname">nz</td><td>Pointer to the number of channels. </td></tr>
+    <tr><td class="paramname">number_of_channels</td><td>Number of channels of the image. </td></tr>
+    <tr><td class="paramname">plhs</td><td>The plhs. </td></tr>
+    <tr><td class="paramname">i</td><td>The element number of the image as an output. </td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a63149697b437f7fcfc7fa92313a454ea"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void imageMatlabToC </td>
+          <td>(</td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>prhsi</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>number_of_channels</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *&#160;</td>
+          <td class="paramname"><em>image</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ Output : None. Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
+    <tr><td class="paramname">nomber_of_channels</td><td>Number of channels of the image. </td></tr>
+    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab. Now, let's see an example on how to use it. I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-</td></tr>
+  </table>
+  </dd>
+</dl>
+<p>#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include "libmexipol.h"</p>
+<p>void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) { int nx, ny, nz; float *image = imageMatlabToC_malloc(prhs[0],&amp;nx,&amp;ny,&amp;nz); //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image); //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it. imageCToMatlab(image, nx, ny, nz, plhs,0); free(image); } </p>
 
 </div>
 </div>
@@ -506,7 +554,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 25 2014 00:54:39 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 25 2014 01:09:33 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
