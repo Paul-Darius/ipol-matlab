@@ -152,7 +152,9 @@ Functions</h2></td></tr>
 <tr class="separator:a4647d56b75168001168fbabef0cec64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63149697b437f7fcfc7fa92313a454ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a> (mxArray *prhsi, int number_of_channels, float *image)</td></tr>
 <tr class="memdesc:a63149697b437f7fcfc7fa92313a454ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : None. Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable.  <a href="#a63149697b437f7fcfc7fa92313a454ea">More...</a><br/></td></tr>
+ Output : None.<br/>
+ Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable. Example :<br/>
+  <a href="#a63149697b437f7fcfc7fa92313a454ea">More...</a><br/></td></tr>
 <tr class="separator:a63149697b437f7fcfc7fa92313a454ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10713e24500063ed4f910b9aa9b3fbf2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a10713e24500063ed4f910b9aa9b3fbf2"></a>
 <a class="el" href="structget_struct.html">getStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>get_structure_malloc</b> (const mxArray *prhsi, int *numb_fields)</td></tr>
@@ -319,17 +321,32 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 </div><div class="memdoc">
 
 <p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : None. Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable. </p>
+ Output : None.<br/>
+ Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable. Example :<br/>
+ </p>
+<p>I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-.<br/>
+</p>
+<p>#include &lt;stdio.h&gt;<br/>
+ #include &lt;stdlib.h&gt;<br/>
+ #include "libmexipol.h"<br/>
+</p>
+<p>void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])<br/>
+ {<br/>
+ int nx, ny, nz;<br/>
+ float *image = imageMatlabToC_malloc(prhs[0],&amp;nx,&amp;ny,&amp;nz);<br/>
+ Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);<br/>
+ This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.<br/>
+ imageCToMatlab(image, nx, ny, nz, plhs,0);<br/>
+ free(image);<br/>
+ }</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
     <tr><td class="paramname">nomber_of_channels</td><td>Number of channels of the image. </td></tr>
-    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab. Now, let's see an example on how to use it. I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-</td></tr>
+    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab. </td></tr>
   </table>
   </dd>
 </dl>
-<p>#include &lt;stdio.h&gt; #include &lt;stdlib.h&gt; #include "libmexipol.h"</p>
-<p>void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[]) { int nx, ny, nz; float *image = imageMatlabToC_malloc(prhs[0],&amp;nx,&amp;ny,&amp;nz); //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image); //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it. imageCToMatlab(image, nx, ny, nz, plhs,0); free(image); } </p>
 
 </div>
 </div>
@@ -554,7 +571,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 25 2014 01:09:33 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 25 2014 01:13:25 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

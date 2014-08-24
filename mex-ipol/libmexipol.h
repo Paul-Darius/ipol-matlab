@@ -139,30 +139,31 @@ void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArra
 /*! \fn void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image)
  \brief
  Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
- Output : None.
+ Output : None.<BR>
  Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable.
+ Example :<BR>
+ 
+ I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-.<BR>
+ 
+ #include <stdio.h><BR>
+ #include <stdlib.h><BR>
+ #include "libmexipol.h"<BR>
+ 
+ 
+ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])<BR>
+ {<BR>
+     int nx, ny, nz;<BR>
+     float *image = imageMatlabToC_malloc(prhs[0],&nx,&ny,&nz);<BR>
+ 	  //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);<BR>
+ 	  //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.<BR>
+     imageCToMatlab(image, nx, ny, nz, plhs,0);<BR>
+     free(image);<BR>
+ }
+
  \param prhsi The element of prhs the user gets the image from.
  \param nomber_of_channels Number of channels of the image.
  \param image Pointer to the image which is given by Matlab.
- // Now, let's see an example on how to use it. I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-
- 
- //#include <stdio.h>
- //#include <stdlib.h>
- //#include "libmexipol.h"
- //
- //
- //void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
- //{
- //    int nx, ny, nz;
- //    float *image = imageMatlabToC_malloc(prhs[0],&nx,&ny,&nz);
- //	  //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
- //	  //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
- //    imageCToMatlab(image, nx, ny, nz, plhs,0);
- //    free(image);
- //}
-
- */
-
+  */
 void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
 
 /* Structure functions */
