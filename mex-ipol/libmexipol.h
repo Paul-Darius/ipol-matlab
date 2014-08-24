@@ -148,7 +148,7 @@ void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArra
  #include <stdio.h><BR>
  #include <stdlib.h><BR>
  #include "libmexipol.h"<BR>
- 
+ #include "mex.h"<BR>
  
  void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])<BR>
  {<BR>
