@@ -168,15 +168,49 @@ void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
 
 /* Structure functions */
 
-// The structure must be a made of double values.
+/**
+ * \struct getStruct
+ * An array of getStruct can contain a full matlab's double structure. For example : [{one,1},{two,2}].
+ * For more informations, look at get_structure_malloc.
+ *
+ */
 struct getStruct {
-	char* name;
-	double value;
+	char* name;/*!< Name of the field. */
+	double value;/*!< Double value within the field. */
 };
 
 typedef struct getStruct getStruct;
 
+/*! \fn getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields)
+ \brief
+ * \brief A necessary array vision of the structure
+ * Goal : How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<BR>
+ * In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to create them.<BR>
+ * A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<BR>
+ * For example in Matlab :<BR>
+ * ---------------
+ * option.one = 1;
+ * option.two = 2;
+ * option
+ * -> option=
+ * -> one: 1
+ * -> two: 2
+ * output=algorithm(input,option) (for example)
+ * ---------------
+ *
+ * All the fields do not have to be explicited, and all of the optional values can be declared in any order. This is a good way to manage
+ * The getStruct structure contains a fieldname and a value. For example : {one,1} or {two,2}.
+ * An array of getStruct can then contain a full matlab's structure. For example : [{one,1},{two,2}].
+ * The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.
+ * For example, in a C-mex file :
+ 
+ \param prhsi The element of prhs the user gets the image from.
+ \param nomber_of_channels Number of channels of the image.
+ \param image Pointer to the image which is given by Matlab.
+ */
+
 getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
+
 
 void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields);
 

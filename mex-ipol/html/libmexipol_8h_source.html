@@ -69,7 +69,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -123,39 +123,42 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="comment">/* Structure functions */</span></div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="comment">// The structure must be a made of double values.</span></div>
-<div class="line"><a name="l00172"></a><span class="lineno"><a class="line" href="structget_struct.html">  172</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> {</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordtype">char</span>* name;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordtype">double</span> value;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;};</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> <a class="code" href="structget_struct.html">getStruct</a>;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;<a class="code" href="structget_struct.html">getStruct</a>* get_structure_malloc(<span class="keyword">const</span> mxArray* prhsi, <span class="keywordtype">int</span> *numb_fields);</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="keywordtype">void</span> set_structure(<a class="code" href="structget_struct.html">getStruct</a>* structure, <span class="keyword">const</span> mxArray* plhs[], <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> numb_fields);</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="comment">// Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.</span></div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">//int n;</span></div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="comment">//getStruct* structure=get_structure_malloc(prhs[0], &amp;n);</span></div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;<span class="comment">//set_structure(structure, plhs,0, n);</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;<span class="comment">//free(structure);</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00177"></a><span class="lineno"><a class="line" href="structget_struct.html">  177</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> {</div>
+<div class="line"><a name="l00178"></a><span class="lineno"><a class="line" href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">  178</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">name</a>;</div>
+<div class="line"><a name="l00179"></a><span class="lineno"><a class="line" href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">  179</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">value</a>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;};</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> <a class="code" href="structget_struct.html">getStruct</a>;</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<a class="code" href="structget_struct.html">getStruct</a>* <a class="code" href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a>(<span class="keyword">const</span> mxArray* prhsi, <span class="keywordtype">int</span> *numb_fields);</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;<span class="keywordtype">void</span> set_structure(<a class="code" href="structget_struct.html">getStruct</a>* structure, <span class="keyword">const</span> mxArray* plhs[], <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> numb_fields);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="comment">// Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.</span></div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="comment">//int n;</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;<span class="comment">//getStruct* structure=get_structure_malloc(prhs[0], &amp;n);</span></div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="comment">//set_structure(structure, plhs,0, n);</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;<span class="comment">//free(structure);</span></div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
 <div class="ttc" id="libmexipol_8h_html_a63149697b437f7fcfc7fa92313a454ea"><div class="ttname"><a href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a></div><div class="ttdeci">void imageMatlabToC(mxArray *prhsi, int number_of_channels, float *image)</div><div class="ttdoc">Goal : prhsi is column-major image because of matlab&#39;s norm. The function creates a row-major image c...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:107</div></div>
 <div class="ttc" id="libmexipol_8h_html_a78d28a4ce70b112ec9fb2da1b8f9ff4e"><div class="ttname"><a href="libmexipol_8h.html#a78d28a4ce70b112ec9fb2da1b8f9ff4e">get_string</a></div><div class="ttdeci">char * get_string(mxArray *prhsi)</div><div class="ttdoc">Output : The string as a char*.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:89</div></div>
 <div class="ttc" id="libmexipol_8h_html_a6d4dd67181af024fd30dfc591d5fcb0b"><div class="ttname"><a href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a></div><div class="ttdeci">float * imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)</div><div class="ttdoc">Goal : prhsi is column-major image because of matlab&#39;s norm. The function creates a row-major image c...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:155</div></div>
 <div class="ttc" id="libmexipol_8h_html_a0d2a48c6fb9b786d0920c4b42ef4c27f"><div class="ttname"><a href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a></div><div class="ttdeci">void set_string(char *message, mxArray *plhsi)</div><div class="ttdoc">Output : none Other informations : The function sets the value of plhs[i] as the one of message...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:100</div></div>
+<div class="ttc" id="structget_struct_html_a1a4b476131f4d6a4dda95674730c40ba"><div class="ttname"><a href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">getStruct::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> libmexipol.h:179</div></div>
 <div class="ttc" id="libmexipol_8h_html_ae72d5e0e7e50eb5dcc088382e99c6198"><div class="ttname"><a href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a></div><div class="ttdeci">void numberio(int nlhs, int i, int nrhs, int j)</div><div class="ttdoc">Goal : Prints an error message if the number of output or the number of input is not the required one...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:17</div></div>
+<div class="ttc" id="structget_struct_html_a3bcaf0e0f3cdf52999f54684fae2c425"><div class="ttname"><a href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">getStruct::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> libmexipol.h:178</div></div>
+<div class="ttc" id="libmexipol_8h_html_a10713e24500063ed4f910b9aa9b3fbf2"><div class="ttname"><a href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a></div><div class="ttdeci">getStruct * get_structure_malloc(const mxArray *prhsi, int *numb_fields)</div><div class="ttdoc">A necessary array vision of the structure Goal : How to deal with the various and numerous parameters...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:231</div></div>
 <div class="ttc" id="libmexipol_8h_html_a82cbbaa1a290babbbe2decbbdb8fa28a"><div class="ttname"><a href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a></div><div class="ttdeci">int get_string_length(mxArray *prhsi)</div><div class="ttdoc">Output :Size of the string.   Typical code :  char message = malloc(sizeof(char)(get_string_length(pr...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:84</div></div>
 <div class="ttc" id="libmexipol_8h_html_a4647d56b75168001168fbabef0cec64b"><div class="ttname"><a href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a></div><div class="ttdeci">void imageCToMatlab(float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</div><div class="ttdoc">Goal : The function sends a row-major float array as a usable output within Matlab.  Output : None. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:182</div></div>
-<div class="ttc" id="structget_struct_html"><div class="ttname"><a href="structget_struct.html">getStruct</a></div><div class="ttdef"><b>Definition:</b> libmexipol.h:172</div></div>
+<div class="ttc" id="structget_struct_html"><div class="ttname"><a href="structget_struct.html">getStruct</a></div><div class="ttdef"><b>Definition:</b> libmexipol.h:177</div></div>
 <div class="ttc" id="libmexipol_8h_html_a69ebb7b18a6be8045de978f1d45fc1ef"><div class="ttname"><a href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a></div><div class="ttdeci">int isCorrectString(char *requiredString, mxArray *prhsi)</div><div class="ttdoc">Goal : The goal is to compare a string to an element of prhs which must be a string.  Output : O if the strings are different. 1 if they are the same.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:65</div></div>
 <div class="ttc" id="libmexipol_8h_html_a818bed1ae54cbe668e903a9abbb56d94"><div class="ttname"><a href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a></div><div class="ttdeci">void type(char *type, const mxArray *prhs[], int i)</div><div class="ttdoc">Goal : Prints an error message if the type is not the one required.  Output : None.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 25 2014 01:14:16 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 25 2014 08:35:48 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
