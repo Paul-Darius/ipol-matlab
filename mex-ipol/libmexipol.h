@@ -171,7 +171,7 @@ void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
 /**
  * \struct getStruct
  * An array of getStruct can contain a full matlab's double structure. For example : [{one,1},{two,2}].
- * For more informations, look at get_structure_malloc.
+ * For more informations, take a look at get_structure_malloc.
  *
  */
 struct getStruct {
@@ -198,11 +198,12 @@ typedef struct getStruct getStruct;
  * output=algorithm(input,option) (for example)
  * ---------------
  *
- * All the fields do not have to be explicited, and all of the optional values can be declared in any order. This is a good way to manage
- * The getStruct structure contains a fieldname and a value. For example : {one,1} or {two,2}.
+ * All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.
+ * The getStruct structure contains a fieldname and a value.
  * An array of getStruct can then contain a full matlab's structure. For example : [{one,1},{two,2}].
- * The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.
- * For example, in a C-mex file :
+ * Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a getStruct array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<BR>
+ * As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].
+ * The programmer can now easily use matlab's structures as he wish.
  
  \param prhsi The element of prhs the user gets the image from.
  \param nomber_of_channels Number of channels of the image.
