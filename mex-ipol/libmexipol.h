@@ -53,9 +53,9 @@ void numberio(int nlhs, int i, int nrhs, int j);
     \brief
      Goal : Prints an error message if the type is not the one required.<BR>
  	 Output : None.<BR>
-    \param type type required : must be "string" or "double"
+    \param type type required : must be "string", "double" or "structure"
     \param prhs The function's prhs
-    \param nrhs The number of input.
+    \param nrhs The element number of prhs which is the number as an input.
     \param j The number of input required by the algorithm.
 */
 
@@ -72,6 +72,7 @@ int isCorrectString( char* requiredString, mxArray *prhsi);
 
 
 /* String functions */
+
 
 /*! \fn int get_string_length(mxArray* prhsi)
  \brief

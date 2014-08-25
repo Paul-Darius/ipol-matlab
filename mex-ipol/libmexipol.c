@@ -56,6 +56,19 @@ void type(char *type, const mxArray *prhs[], int i)
 
         }
     }
+    else if(strcmp (type,"structure"))==0)
+    {
+        if (!mxIsStruct(prhs[i]))
+        {
+            char* numero[200];
+            sprintf(numero, "%d", i);
+            char* errmsg[200];
+            strcpy (errmsg, "The type of the data number ");
+            strcat (errmsg, numero);
+            strcat (errmsg, " must be a structure.");
+            mexErrMsgTxt(errmsg);
+        }
+    }
     else
     {
         mexErrMsgTxt("Ask the programmer of this soft to clear up this issue");
