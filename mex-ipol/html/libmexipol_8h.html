@@ -158,7 +158,7 @@ Functions</h2></td></tr>
 <tr class="separator:a63149697b437f7fcfc7fa92313a454ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10713e24500063ed4f910b9aa9b3fbf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structget_struct.html">getStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a> (const mxArray *prhsi, int *numb_fields)</td></tr>
 <tr class="memdesc:a10713e24500063ed4f910b9aa9b3fbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A necessary array vision of the structure Goal : How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<br/>
- In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to create them.<br/>
+ In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<br/>
  A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<br/>
  </p>
 <h2>For example in Matlab :<br/>
@@ -259,7 +259,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 </div><div class="memdoc">
 
 <p>A necessary array vision of the structure Goal : How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<br/>
- In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to create them.<br/>
+ In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<br/>
  A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<br/>
  </p>
 <h2>For example in Matlab :<br/>
@@ -267,13 +267,24 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 option.one = 1; option.two = 2; option -&gt; option= -&gt; one: 1 -&gt; two: 2 </p>
 <h2>output=algorithm(input,option) (for example) </h2>
 </p>
-<p>All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters. The <a class="el" href="structget_struct.html">getStruct</a> structure contains a fieldname and a value. An array of <a class="el" href="structget_struct.html">getStruct</a> can then contain a full matlab's structure. For example : [{one,1},{two,2}]. Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a <a class="el" href="structget_struct.html">getStruct</a> array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<br/>
- As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}]. The programmer can now easily use matlab's structures as he wish.</p>
+<p>Goal : Transform a <a class="el" href="structget_struct.html">getStruct</a> array into a structure given as a Matlab output.<br/>
+ Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.<br/>
+ int n;<br/>
+ getStruct* structure=get_structure_malloc(prhs[0], &amp;n);<br/>
+ The <a class="el" href="structget_struct.html">getStruct</a> array structure can be modified here set_structure(structure, plhs,0, n);<br/>
+ free(structure);<br/>
+</p>
+<p>All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters. The <a class="el" href="structget_struct.html">getStruct</a> structure contains a fieldname and a value. An array of <a class="el" href="structget_struct.html">getStruct</a> can contain a full matlab's structure. For example : [{one,1},{two,2}]. Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a <a class="el" href="structget_struct.html">getStruct</a> array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<br/>
+ As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}]. The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
     <tr><td class="paramname">nomber_of_channels</td><td>Number of channels of the image. </td></tr>
-    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab. </td></tr>
+    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab.</td></tr>
+    <tr><td class="paramname">structure</td><td>The <a class="el" href="structget_struct.html">getStruct</a> array. </td></tr>
+    <tr><td class="paramname">plhs</td><td>The plhs. </td></tr>
+    <tr><td class="paramname">i</td><td>The output number. </td></tr>
+    <tr><td class="paramname">numb_fields</td><td>The size of the array, i.e. the size of the structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -626,7 +637,7 @@ option.one = 1; option.two = 2; option -&gt; option= -&gt; one: 1 -&gt; two: 2 <
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 25 2014 18:33:28 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 25 2014 19:10:36 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

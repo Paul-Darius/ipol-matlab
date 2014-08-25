@@ -185,7 +185,7 @@ typedef struct getStruct getStruct;
  \brief
  * \brief A necessary array vision of the structure
  * Goal : How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<BR>
- * In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to create them.<BR>
+ * In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<BR>
  * A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<BR>
  * For example in Matlab :<BR>
  * ---------------
@@ -200,10 +200,10 @@ typedef struct getStruct getStruct;
  *
  * All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.
  * The getStruct structure contains a fieldname and a value.
- * An array of getStruct can then contain a full matlab's structure. For example : [{one,1},{two,2}].
+ * An array of getStruct can contain a full matlab's structure. For example : [{one,1},{two,2}].
  * Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a getStruct array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<BR>
  * As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].
- * The programmer can now easily use matlab's structures as he wish.
+ * The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.
  
  \param prhsi The element of prhs the user gets the image from.
  \param nomber_of_channels Number of channels of the image.
@@ -212,13 +212,20 @@ typedef struct getStruct getStruct;
 
 getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
 
+/*! \fn getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields)
+ * \brief Goal : Transform a getStruct array into a structure given as a Matlab output.<BR>
+ Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.<BR>
+ int n;<BR>
+ getStruct* structure=get_structure_malloc(prhs[0], &n);<BR>
+ // The getStruct array structure can be modified here
+ set_structure(structure, plhs,0, n);<BR>
+ free(structure);<BR>
+ \param structure The getStruct array.
+ \param plhs The plhs.
+ \param i The output number.
+ \param numb_fields The size of the array, i.e. the size of the structure.
+ */
 
 void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields);
-
-// Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.
-//int n;
-//getStruct* structure=get_structure_malloc(prhs[0], &n);
-//set_structure(structure, plhs,0, n);
-//free(structure);
 
 
