@@ -124,7 +124,9 @@ float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
 /*! \fn void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
  \brief
  Goal : The function sends a row-major float array as a usable output within Matlab.<BR>
- Output : None.
+ Output : None.<BR>
+ NOTE : As its names underlines it, the function allocates space for the float array. You must free it when you do not need it anymore.<BR>
+
  \param image The float-type image which must be sent to Matlab
  \param nx Pointer to the number of columns.
  \param ny Pointer to the number of rows.
@@ -204,6 +206,7 @@ typedef struct getStruct getStruct;
  * Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a getStruct array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<BR>
  * As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].
  * The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.
+ * NOTE : As its names underlines it, the function allocates space for the getStruct array. You must free it when you do not need it anymore.<BR>
  
  \param prhsi The element of prhs the user gets the image from.
  \param nomber_of_channels Number of channels of the image.

@@ -148,7 +148,9 @@ Functions</h2></td></tr>
 <tr class="separator:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4647d56b75168001168fbabef0cec64b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a> (float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</td></tr>
 <tr class="memdesc:a4647d56b75168001168fbabef0cec64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : The function sends a row-major float array as a usable output within Matlab.<br/>
- Output : None.  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
+ Output : None.<br/>
+ NOTE : As its names underlines it, the function allocates space for the float array. You must free it when you do not need it anymore.<br/>
+  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
 <tr class="separator:a4647d56b75168001168fbabef0cec64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63149697b437f7fcfc7fa92313a454ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a> (mxArray *prhsi, int number_of_channels, float *image)</td></tr>
 <tr class="memdesc:a63149697b437f7fcfc7fa92313a454ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
@@ -275,7 +277,8 @@ option.one = 1; option.two = 2; option -&gt; option= -&gt; one: 1 -&gt; two: 2 <
  free(structure);<br/>
 </p>
 <p>All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters. The <a class="el" href="structget_struct.html">getStruct</a> structure contains a fieldname and a value. An array of <a class="el" href="structget_struct.html">getStruct</a> can contain a full matlab's structure. For example : [{one,1},{two,2}]. Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a <a class="el" href="structget_struct.html">getStruct</a> array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<br/>
- As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}]. The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.</p>
+ As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}]. The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres. NOTE : As its names underlines it, the function allocates space for the <a class="el" href="structget_struct.html">getStruct</a> array. You must free it when you do not need it anymore.<br/>
+</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
@@ -340,7 +343,9 @@ option.one = 1; option.two = 2; option -&gt; option= -&gt; one: 1 -&gt; two: 2 <
 </div><div class="memdoc">
 
 <p>Goal : The function sends a row-major float array as a usable output within Matlab.<br/>
- Output : None. </p>
+ Output : None.<br/>
+ NOTE : As its names underlines it, the function allocates space for the float array. You must free it when you do not need it anymore.<br/>
+ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">image</td><td>The float-type image which must be sent to Matlab </td></tr>
@@ -637,7 +642,7 @@ option.one = 1; option.two = 2; option -&gt; option= -&gt; one: 1 -&gt; two: 2 <
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Aug 25 2014 19:10:36 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Aug 25 2014 19:14:08 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
