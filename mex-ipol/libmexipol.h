@@ -191,22 +191,22 @@ typedef struct getStruct getStruct;
  * In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<BR>
  * A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<BR>
  * For example in Matlab :<BR>
- * ---------------
- * option.one = 1;
- * option.two = 2;
- * option
- * -> option=
- * -> one: 1
- * -> two: 2
- * output=algorithm(input,option) (for example)
- * ---------------
- *
- * All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.
- * The getStruct structure contains a fieldname and a value.
- * An array of getStruct can contain a full matlab's structure. For example : [{one,1},{two,2}].
+ * ---------------<BR>
+ * option.one = 1;<BR>
+ * option.two = 2;<BR>
+ * option<BR>
+ * -> option=<BR>
+ * -> one: 1<BR>
+ * -> two: 2<BR>
+ * output=algorithm(input,option) (for example)<BR>
+ * ---------------<BR>
+ *<BR>
+ * All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.<BR>
+ * The getStruct structure contains a fieldname and a value.<BR>
+ * An array of getStruct can contain a full matlab's structure. For example : [{one,1},{two,2}].<BR>
  * Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a getStruct array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<BR>
- * As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].
- * The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.
+ * As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].<BR>
+ * The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.<BR>
  * NOTE : As its names underlines it, the function allocates space for the getStruct array. You must free it when you do not need it anymore.<BR>
  
  \param prhsi The element of prhs the user gets the image from.
