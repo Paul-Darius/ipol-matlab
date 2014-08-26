@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Library Mex-Ipol: libmexipol.h Source File</title>
+<title>Mex-Ipol Library: libmexipol.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Library Mex-Ipol
+   <div id="projectname">Mex-Ipol Library
    </div>
   </td>
  </tr>
@@ -84,75 +84,74 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <a href="libmexipol_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="preprocessor">#ifdef __APPLE__</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span>* char16_t;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="preprocessor">#endif</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="preprocessor">#include &quot;mex.h&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">/* input/output handling */</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a>(<span class="keywordtype">int</span> nlhs, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> nrhs, <span class="keywordtype">int</span> j);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a>(<span class="keywordtype">char</span> *<a class="code" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a>, <span class="keyword">const</span> mxArray *prhs[], <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a>( <span class="keywordtype">char</span>* requiredString, mxArray *prhsi);</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment">/* String functions */</span></div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a>(mxArray* prhsi);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="libmexipol_8h.html#a78d28a4ce70b112ec9fb2da1b8f9ff4e">get_string</a>(mxArray* prhsi);</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a>(<span class="keywordtype">char</span>* message, mxArray* plhsi);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="preprocessor">#ifdef __APPLE__</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">typedef</span> <span class="keywordtype">char</span>* char16_t;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="preprocessor">#include &lt;stdio.h&gt;</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="preprocessor">#include &lt;stdlib.h&gt;</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="preprocessor">#include &lt;string.h&gt;</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="preprocessor">#include &quot;mex.h&quot;</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">/* input/output handling */</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a>(<span class="keywordtype">int</span> nlhs, <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> nrhs, <span class="keywordtype">int</span> j);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a>(<span class="keywordtype">char</span> *<a class="code" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a>, <span class="keyword">const</span> mxArray *prhs[], <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a>( <span class="keywordtype">char</span>* requiredString, mxArray *prhsi);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="comment">/* String functions */</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;<span class="keywordtype">int</span> <a class="code" href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a>(mxArray* prhsi);</div>
 <div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment">/* Array functions */</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="keywordtype">float</span>* <a class="code" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a>(mxArray *prhsi, <span class="keywordtype">int</span> *nx, <span class="keywordtype">int</span> *ny, <span class="keywordtype">int</span> *nz);</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a>(<span class="keywordtype">float</span>* image, <span class="keywordtype">int</span> nx, <span class="keywordtype">int</span> ny, <span class="keywordtype">int</span> number_of_channels, mxArray *plhs[], <span class="keywordtype">int</span> i);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a>(mxArray *prhsi, <span class="keywordtype">int</span> number_of_channels, <span class="keywordtype">float</span>* image);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;<span class="comment">/* Structure functions */</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00180"></a><span class="lineno"><a class="line" href="structget_struct.html">  180</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> {</div>
-<div class="line"><a name="l00181"></a><span class="lineno"><a class="line" href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">  181</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">name</a>;</div>
-<div class="line"><a name="l00182"></a><span class="lineno"><a class="line" href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">  182</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">value</a>;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;};</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> <a class="code" href="structget_struct.html">getStruct</a>;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<a class="code" href="structget_struct.html">getStruct</a>* <a class="code" href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a>(<span class="keyword">const</span> mxArray* prhsi, <span class="keywordtype">int</span> *numb_fields);</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="keywordtype">void</span> set_structure(<a class="code" href="structget_struct.html">getStruct</a>* structure, <span class="keyword">const</span> mxArray* plhs[], <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> numb_fields);</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="ttc" id="libmexipol_8h_html_a63149697b437f7fcfc7fa92313a454ea"><div class="ttname"><a href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a></div><div class="ttdeci">void imageMatlabToC(mxArray *prhsi, int number_of_channels, float *image)</div><div class="ttdoc">Goal : prhsi is column-major image because of matlab&#39;s norm. The function creates a row-major image c...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:120</div></div>
-<div class="ttc" id="libmexipol_8h_html_a78d28a4ce70b112ec9fb2da1b8f9ff4e"><div class="ttname"><a href="libmexipol_8h.html#a78d28a4ce70b112ec9fb2da1b8f9ff4e">get_string</a></div><div class="ttdeci">char * get_string(mxArray *prhsi)</div><div class="ttdoc">Output : The string as a char*.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:102</div></div>
-<div class="ttc" id="libmexipol_8h_html_a6d4dd67181af024fd30dfc591d5fcb0b"><div class="ttname"><a href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a></div><div class="ttdeci">float * imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)</div><div class="ttdoc">Goal : prhsi is column-major image because of matlab&#39;s norm. The function creates a row-major image c...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:168</div></div>
-<div class="ttc" id="libmexipol_8h_html_a0d2a48c6fb9b786d0920c4b42ef4c27f"><div class="ttname"><a href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a></div><div class="ttdeci">void set_string(char *message, mxArray *plhsi)</div><div class="ttdoc">Output : none Other informations : The function sets the value of plhs[i] as the one of message...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:113</div></div>
-<div class="ttc" id="structget_struct_html_a1a4b476131f4d6a4dda95674730c40ba"><div class="ttname"><a href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">getStruct::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> libmexipol.h:182</div></div>
-<div class="ttc" id="libmexipol_8h_html_ae72d5e0e7e50eb5dcc088382e99c6198"><div class="ttname"><a href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a></div><div class="ttdeci">void numberio(int nlhs, int i, int nrhs, int j)</div><div class="ttdoc">Goal : Prints an error message if the number of output or the number of input is not the required one...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:17</div></div>
-<div class="ttc" id="structget_struct_html_a3bcaf0e0f3cdf52999f54684fae2c425"><div class="ttname"><a href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">getStruct::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> libmexipol.h:181</div></div>
-<div class="ttc" id="libmexipol_8h_html_a10713e24500063ed4f910b9aa9b3fbf2"><div class="ttname"><a href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a></div><div class="ttdeci">getStruct * get_structure_malloc(const mxArray *prhsi, int *numb_fields)</div><div class="ttdoc">A necessary array vision of the structure Goal : How to deal with the various and numerous parameters...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:244</div></div>
-<div class="ttc" id="libmexipol_8h_html_a82cbbaa1a290babbbe2decbbdb8fa28a"><div class="ttname"><a href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a></div><div class="ttdeci">int get_string_length(mxArray *prhsi)</div><div class="ttdoc">Output :Size of the string.   Typical code :  char message = malloc(sizeof(char)(get_string_length(pr...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:97</div></div>
-<div class="ttc" id="libmexipol_8h_html_a4647d56b75168001168fbabef0cec64b"><div class="ttname"><a href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a></div><div class="ttdeci">void imageCToMatlab(float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</div><div class="ttdoc">Goal : The function sends a row-major float array as a usable output within Matlab.  Output : None.  NOTE : As its names underlines it, the function allocates space for the float array. You must free it when you do not need it anymore.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:195</div></div>
-<div class="ttc" id="structget_struct_html"><div class="ttname"><a href="structget_struct.html">getStruct</a></div><div class="ttdef"><b>Definition:</b> libmexipol.h:180</div></div>
-<div class="ttc" id="libmexipol_8h_html_a69ebb7b18a6be8045de978f1d45fc1ef"><div class="ttname"><a href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a></div><div class="ttdeci">int isCorrectString(char *requiredString, mxArray *prhsi)</div><div class="ttdoc">Goal : The goal is to compare a string to an element of prhs which must be a string.  Output : O if the strings are different. 1 if they are the same.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:78</div></div>
-<div class="ttc" id="libmexipol_8h_html_a818bed1ae54cbe668e903a9abbb56d94"><div class="ttname"><a href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a></div><div class="ttdeci">void type(char *type, const mxArray *prhs[], int i)</div><div class="ttdoc">Goal : Prints an error message if the type is not the one required.  Output : None.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:29</div></div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keywordtype">char</span>* <a class="code" href="libmexipol_8h.html#ae033d79c074829908e62deaeee2ae556">get_string_malloc</a>(mxArray* prhsi);</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a>(<span class="keywordtype">char</span>* message, mxArray* plhsi);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="comment">/* Array functions */</span></div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;<span class="keywordtype">float</span>* <a class="code" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a>(mxArray *prhsi, <span class="keywordtype">int</span> *nx, <span class="keywordtype">int</span> *ny, <span class="keywordtype">int</span> *nz);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a>(<span class="keywordtype">float</span>* image, <span class="keywordtype">int</span> nx, <span class="keywordtype">int</span> ny, <span class="keywordtype">int</span> number_of_channels, mxArray *plhs[], <span class="keywordtype">int</span> i);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a>(mxArray *prhsi, <span class="keywordtype">int</span> number_of_channels, <span class="keywordtype">float</span>* image);</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;<span class="comment">/* Structure functions */</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno"><a class="line" href="structget_struct.html">  207</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> {</div>
+<div class="line"><a name="l00208"></a><span class="lineno"><a class="line" href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">  208</a></span>&#160;    <span class="keywordtype">char</span>* <a class="code" href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">name</a>;</div>
+<div class="line"><a name="l00209"></a><span class="lineno"><a class="line" href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">  209</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">value</a>;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;};</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span><a class="code" href="structget_struct.html">getStruct</a> <a class="code" href="structget_struct.html">getStruct</a>;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;<a class="code" href="structget_struct.html">getStruct</a>* <a class="code" href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a>(<span class="keyword">const</span> mxArray* prhsi, <span class="keywordtype">int</span> *numb_fields);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="keywordtype">void</span> <a class="code" href="libmexipol_8h.html#a7ba6d09740d38588448d89cc68a48866">set_structure</a>(<a class="code" href="structget_struct.html">getStruct</a>* structure, <span class="keyword">const</span> mxArray* plhs[], <span class="keywordtype">int</span> i, <span class="keywordtype">int</span> numb_fields);</div>
+<div class="ttc" id="libmexipol_8h_html_a63149697b437f7fcfc7fa92313a454ea"><div class="ttname"><a href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a></div><div class="ttdeci">void imageMatlabToC(mxArray *prhsi, int number_of_channels, float *image)</div><div class="ttdoc">Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. An alternative version of imageMatlabToC_malloc where the user has to do the memory allocation himself.  </div><div class="ttdef"><b>Definition:</b> libmexipol.c:120</div></div>
+<div class="ttc" id="libmexipol_8h_html_a6d4dd67181af024fd30dfc591d5fcb0b"><div class="ttname"><a href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a></div><div class="ttdeci">float * imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)</div><div class="ttdoc">Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:168</div></div>
+<div class="ttc" id="libmexipol_8h_html_ae033d79c074829908e62deaeee2ae556"><div class="ttname"><a href="libmexipol_8h.html#ae033d79c074829908e62deaeee2ae556">get_string_malloc</a></div><div class="ttdeci">char * get_string_malloc(mxArray *prhsi)</div><div class="ttdoc">String from Matlab to char*. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:102</div></div>
+<div class="ttc" id="libmexipol_8h_html_a0d2a48c6fb9b786d0920c4b42ef4c27f"><div class="ttname"><a href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a></div><div class="ttdeci">void set_string(char *message, mxArray *plhsi)</div><div class="ttdoc">char* to an output string. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:113</div></div>
+<div class="ttc" id="structget_struct_html_a1a4b476131f4d6a4dda95674730c40ba"><div class="ttname"><a href="structget_struct.html#a1a4b476131f4d6a4dda95674730c40ba">getStruct::value</a></div><div class="ttdeci">double value</div><div class="ttdef"><b>Definition:</b> libmexipol.h:209</div></div>
+<div class="ttc" id="libmexipol_8h_html_ae72d5e0e7e50eb5dcc088382e99c6198"><div class="ttname"><a href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a></div><div class="ttdeci">void numberio(int nlhs, int i, int nrhs, int j)</div><div class="ttdoc">Error message if the nlhs or prhs is not correct. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:17</div></div>
+<div class="ttc" id="structget_struct_html_a3bcaf0e0f3cdf52999f54684fae2c425"><div class="ttname"><a href="structget_struct.html#a3bcaf0e0f3cdf52999f54684fae2c425">getStruct::name</a></div><div class="ttdeci">char * name</div><div class="ttdef"><b>Definition:</b> libmexipol.h:208</div></div>
+<div class="ttc" id="libmexipol_8h_html_a10713e24500063ed4f910b9aa9b3fbf2"><div class="ttname"><a href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a></div><div class="ttdeci">getStruct * get_structure_malloc(const mxArray *prhsi, int *numb_fields)</div><div class="ttdoc">A necessary array vision of the structure : a Matlab structure to getStruct array convertor...</div><div class="ttdef"><b>Definition:</b> libmexipol.c:244</div></div>
+<div class="ttc" id="libmexipol_8h_html_a82cbbaa1a290babbbe2decbbdb8fa28a"><div class="ttname"><a href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a></div><div class="ttdeci">int get_string_length(mxArray *prhsi)</div><div class="ttdoc">Get the size of a Matlab&#39;s string. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:97</div></div>
+<div class="ttc" id="libmexipol_8h_html_a4647d56b75168001168fbabef0cec64b"><div class="ttname"><a href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a></div><div class="ttdeci">void imageCToMatlab(float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</div><div class="ttdoc">Make a Matlab-usable matrix from a C-made matrix. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:195</div></div>
+<div class="ttc" id="structget_struct_html"><div class="ttname"><a href="structget_struct.html">getStruct</a></div><div class="ttdef"><b>Definition:</b> libmexipol.h:207</div></div>
+<div class="ttc" id="libmexipol_8h_html_a69ebb7b18a6be8045de978f1d45fc1ef"><div class="ttname"><a href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a></div><div class="ttdeci">int isCorrectString(char *requiredString, mxArray *prhsi)</div><div class="ttdoc">Strcmp for a string from Matlab and a char array. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:78</div></div>
+<div class="ttc" id="libmexipol_8h_html_a7ba6d09740d38588448d89cc68a48866"><div class="ttname"><a href="libmexipol_8h.html#a7ba6d09740d38588448d89cc68a48866">set_structure</a></div><div class="ttdeci">void set_structure(getStruct *structure, const mxArray *plhs[], int i, int numb_fields)</div><div class="ttdoc">getStruct* array to an output structure. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:262</div></div>
+<div class="ttc" id="libmexipol_8h_html_a818bed1ae54cbe668e903a9abbb56d94"><div class="ttname"><a href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a></div><div class="ttdeci">void type(char *type, const mxArray *prhs[], int i)</div><div class="ttdoc">Error message if the type is not the required one. </div><div class="ttdef"><b>Definition:</b> libmexipol.c:29</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 26 2014 00:23:03 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 13:48:07 for Mex-Ipol Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

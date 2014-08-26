@@ -99,7 +99,7 @@ int get_string_length(mxArray* prhsi)
     return mxGetN(prhsi);
 }
 
-char* get_string(mxArray* prhsi)
+char* get_string_malloc(mxArray* prhsi)
 {
     char* buf;
     size_t buflen;

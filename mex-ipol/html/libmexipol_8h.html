@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Library Mex-Ipol: libmexipol.h File Reference</title>
+<title>Mex-Ipol Library: libmexipol.h File Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Library Mex-Ipol
+   <div id="projectname">Mex-Ipol Library
    </div>
   </td>
  </tr>
@@ -111,79 +111,38 @@ typedef struct <a class="el" href="structget_struct.html">getStruct</a>&#160;</t
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#ae72d5e0e7e50eb5dcc088382e99c6198">numberio</a> (int nlhs, int i, int nrhs, int j)</td></tr>
-<tr class="memdesc:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : Prints an error message if the number of output or the number of input is not the required one.<br/>
- Output : None.<br/>
-  <a href="#ae72d5e0e7e50eb5dcc088382e99c6198">More...</a><br/></td></tr>
+<tr class="memdesc:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error message if the nlhs or prhs is not correct.  <a href="#ae72d5e0e7e50eb5dcc088382e99c6198">More...</a><br/></td></tr>
 <tr class="separator:ae72d5e0e7e50eb5dcc088382e99c6198"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a818bed1ae54cbe668e903a9abbb56d94"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94">type</a> (char *type, const mxArray *prhs[], int i)</td></tr>
-<tr class="memdesc:a818bed1ae54cbe668e903a9abbb56d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : Prints an error message if the type is not the one required.<br/>
- Output : None.<br/>
-  <a href="#a818bed1ae54cbe668e903a9abbb56d94">More...</a><br/></td></tr>
+<tr class="memdesc:a818bed1ae54cbe668e903a9abbb56d94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Error message if the type is not the required one.  <a href="#a818bed1ae54cbe668e903a9abbb56d94">More...</a><br/></td></tr>
 <tr class="separator:a818bed1ae54cbe668e903a9abbb56d94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a69ebb7b18a6be8045de978f1d45fc1ef">isCorrectString</a> (char *requiredString, mxArray *prhsi)</td></tr>
-<tr class="memdesc:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : The goal is to compare a string to an element of prhs which must be a string.<br/>
- Output : O if the strings are different. 1 if they are the same.<br/>
-  <a href="#a69ebb7b18a6be8045de978f1d45fc1ef">More...</a><br/></td></tr>
+<tr class="memdesc:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Strcmp for a string from Matlab and a char array.  <a href="#a69ebb7b18a6be8045de978f1d45fc1ef">More...</a><br/></td></tr>
 <tr class="separator:a69ebb7b18a6be8045de978f1d45fc1ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a82cbbaa1a290babbbe2decbbdb8fa28a">get_string_length</a> (mxArray *prhsi)</td></tr>
-<tr class="memdesc:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output :Size of the string.<br/>
-<br/>
- Typical code :<br/>
- char <em>message = malloc(sizeof(char)</em>(get_string_length(prhs[X])+1));<br/>
- message = get_string(prhs[X]);<br/>
- (...) using the variable message (...)<br/>
- free(message);<br/>
-  <a href="#a82cbbaa1a290babbbe2decbbdb8fa28a">More...</a><br/></td></tr>
+<tr class="memdesc:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the size of a Matlab's string.  <a href="#a82cbbaa1a290babbbe2decbbdb8fa28a">More...</a><br/></td></tr>
 <tr class="separator:a82cbbaa1a290babbbe2decbbdb8fa28a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a78d28a4ce70b112ec9fb2da1b8f9ff4e">get_string</a> (mxArray *prhsi)</td></tr>
-<tr class="memdesc:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output : The string as a char*.<br/>
-  <a href="#a78d28a4ce70b112ec9fb2da1b8f9ff4e">More...</a><br/></td></tr>
-<tr class="separator:a78d28a4ce70b112ec9fb2da1b8f9ff4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae033d79c074829908e62deaeee2ae556"><td class="memItemLeft" align="right" valign="top">char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#ae033d79c074829908e62deaeee2ae556">get_string_malloc</a> (mxArray *prhsi)</td></tr>
+<tr class="memdesc:ae033d79c074829908e62deaeee2ae556"><td class="mdescLeft">&#160;</td><td class="mdescRight">String from Matlab to char*.  <a href="#ae033d79c074829908e62deaeee2ae556">More...</a><br/></td></tr>
+<tr class="separator:ae033d79c074829908e62deaeee2ae556"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a0d2a48c6fb9b786d0920c4b42ef4c27f">set_string</a> (char *message, mxArray *plhsi)</td></tr>
-<tr class="memdesc:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Output : none Other informations : The function sets the value of plhs[i] as the one of message.  <a href="#a0d2a48c6fb9b786d0920c4b42ef4c27f">More...</a><br/></td></tr>
+<tr class="memdesc:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="mdescLeft">&#160;</td><td class="mdescRight">char* to an output string.  <a href="#a0d2a48c6fb9b786d0920c4b42ef4c27f">More...</a><br/></td></tr>
 <tr class="separator:a0d2a48c6fb9b786d0920c4b42ef4c27f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memItemLeft" align="right" valign="top">float *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b">imageMatlabToC_malloc</a> (mxArray *prhsi, int *nx, int *ny, int *nz)</td></tr>
-<tr class="memdesc:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : Pointer to the first element of the array.  <a href="#a6d4dd67181af024fd30dfc591d5fcb0b">More...</a><br/></td></tr>
+<tr class="memdesc:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images.  <a href="#a6d4dd67181af024fd30dfc591d5fcb0b">More...</a><br/></td></tr>
 <tr class="separator:a6d4dd67181af024fd30dfc591d5fcb0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4647d56b75168001168fbabef0cec64b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a4647d56b75168001168fbabef0cec64b">imageCToMatlab</a> (float *image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)</td></tr>
-<tr class="memdesc:a4647d56b75168001168fbabef0cec64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : The function sends a row-major float array as a usable output within Matlab.<br/>
- Output : None.<br/>
- NOTE : As its names underlines it, the function allocates space for the float array. You must free it when you do not need it anymore.<br/>
-  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
+<tr class="memdesc:a4647d56b75168001168fbabef0cec64b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a Matlab-usable matrix from a C-made matrix.  <a href="#a4647d56b75168001168fbabef0cec64b">More...</a><br/></td></tr>
 <tr class="separator:a4647d56b75168001168fbabef0cec64b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63149697b437f7fcfc7fa92313a454ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a63149697b437f7fcfc7fa92313a454ea">imageMatlabToC</a> (mxArray *prhsi, int number_of_channels, float *image)</td></tr>
-<tr class="memdesc:a63149697b437f7fcfc7fa92313a454ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : None.<br/>
- Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable. Example :<br/>
+<tr class="memdesc:a63149697b437f7fcfc7fa92313a454ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. An alternative version of <a class="el" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b" title="Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. ">imageMatlabToC_malloc</a> where the user has to do the memory allocation himself.<br/>
   <a href="#a63149697b437f7fcfc7fa92313a454ea">More...</a><br/></td></tr>
 <tr class="separator:a63149697b437f7fcfc7fa92313a454ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10713e24500063ed4f910b9aa9b3fbf2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structget_struct.html">getStruct</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a10713e24500063ed4f910b9aa9b3fbf2">get_structure_malloc</a> (const mxArray *prhsi, int *numb_fields)</td></tr>
-<tr class="memdesc:a10713e24500063ed4f910b9aa9b3fbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A necessary array vision of the structure Goal : How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<br/>
- In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<br/>
- A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<br/>
- For example in Matlab :<br/>
- ------------&mdash;<br/>
- option.one = 1;<br/>
- option.two = 2;<br/>
- option<br/>
- -&gt; option=<br/>
- -&gt; one: 1<br/>
- -&gt; two: 2<br/>
- output=algorithm(input,option) (for example)<br/>
- ------------&mdash;<br/>
- <br/>
- All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.<br/>
- The <a class="el" href="structget_struct.html">getStruct</a> structure contains a fieldname and a value.<br/>
- An array of <a class="el" href="structget_struct.html">getStruct</a> can contain a full matlab's structure. For example : [{one,1},{two,2}].<br/>
- Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a <a class="el" href="structget_struct.html">getStruct</a> array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<br/>
- As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].<br/>
- The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.<br/>
- NOTE : As its names underlines it, the function allocates space for the <a class="el" href="structget_struct.html">getStruct</a> array. You must free it when you do not need it anymore.<br/>
-  <a href="#a10713e24500063ed4f910b9aa9b3fbf2">More...</a><br/></td></tr>
+<tr class="memdesc:a10713e24500063ed4f910b9aa9b3fbf2"><td class="mdescLeft">&#160;</td><td class="mdescRight">A necessary array vision of the structure : a Matlab structure to <a class="el" href="structget_struct.html">getStruct</a> array convertor.  <a href="#a10713e24500063ed4f910b9aa9b3fbf2">More...</a><br/></td></tr>
 <tr class="separator:a10713e24500063ed4f910b9aa9b3fbf2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7ba6d09740d38588448d89cc68a48866"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7ba6d09740d38588448d89cc68a48866"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a class="el" href="structget_struct.html">getStruct</a> *structure, const mxArray *plhs[], int i, int numb_fields)</td></tr>
+<tr class="memitem:a7ba6d09740d38588448d89cc68a48866"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="libmexipol_8h.html#a7ba6d09740d38588448d89cc68a48866">set_structure</a> (<a class="el" href="structget_struct.html">getStruct</a> *structure, const mxArray *plhs[], int i, int numb_fields)</td></tr>
+<tr class="memdesc:a7ba6d09740d38588448d89cc68a48866"><td class="mdescLeft">&#160;</td><td class="mdescRight">getStruct* array to an output structure.  <a href="#a7ba6d09740d38588448d89cc68a48866">More...</a><br/></td></tr>
 <tr class="separator:a7ba6d09740d38588448d89cc68a48866"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -193,31 +152,6 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 <dl class="section date"><dt>Date</dt><dd>August 21, 2014</dd></dl>
 <p>This .h document contains all the mexipol's functions prototypes. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a78d28a4ce70b112ec9fb2da1b8f9ff4e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">char* get_string </td>
-          <td>(</td>
-          <td class="paramtype">mxArray *&#160;</td>
-          <td class="paramname"><em>prhsi</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Output : The string as a char*.<br/>
- </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">prhsi</td><td>a string element from prhs </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
 <a class="anchor" id="a82cbbaa1a290babbbe2decbbdb8fa28a"></a>
 <div class="memitem">
 <div class="memproto">
@@ -232,17 +166,46 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Output :Size of the string.<br/>
+<p>Get the size of a Matlab's string. </p>
+<p><b>Output :</b> Size of the string.<br/>
 <br/>
- Typical code :<br/>
+ <b>Typical code :</b><br/>
+ ------------&mdash;<br/>
  char <em>message = malloc(sizeof(char)</em>(get_string_length(prhs[X])+1));<br/>
  message = get_string(prhs[X]);<br/>
  (...) using the variable message (...)<br/>
  free(message);<br/>
+ ------------&mdash;<br/>
  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">a</td><td>string element from prhs </td></tr>
+    <tr><td class="paramname">prhsi</td><td>a string element from prhs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="ae033d79c074829908e62deaeee2ae556"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char* get_string_malloc </td>
+          <td>(</td>
+          <td class="paramtype">mxArray *&#160;</td>
+          <td class="paramname"><em>prhsi</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>String from Matlab to char*. </p>
+<p><b>Output :</b> The string as a char*.<br/>
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">prhsi</td><td>a string element from prhs </td></tr>
   </table>
   </dd>
 </dl>
@@ -273,44 +236,36 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>A necessary array vision of the structure Goal : How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<br/>
+<p>A necessary array vision of the structure : a Matlab structure to <a class="el" href="structget_struct.html">getStruct</a> array convertor. </p>
+<p><b>Goal :</b> How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<br/>
  In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<br/>
  A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<br/>
+<br/>
  For example in Matlab :<br/>
  ------------&mdash;<br/>
- option.one = 1;<br/>
- option.two = 2;<br/>
- option<br/>
+ &gt;option.one = 1;<br/>
+ &gt;option.two = 2;<br/>
+ &gt;option<br/>
  -&gt; option=<br/>
  -&gt; one: 1<br/>
  -&gt; two: 2<br/>
- output=algorithm(input,option) (for example)<br/>
+ &gt;output=algorithm(input,option)<br/>
  ------------&mdash;<br/>
- <br/>
+<br/>
  All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.<br/>
  The <a class="el" href="structget_struct.html">getStruct</a> structure contains a fieldname and a value.<br/>
  An array of <a class="el" href="structget_struct.html">getStruct</a> can contain a full matlab's structure. For example : [{one,1},{two,2}].<br/>
  Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a <a class="el" href="structget_struct.html">getStruct</a> array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<br/>
- As an example, the option input of the previous Matlab example would be : [{one,1},{two,2}].<br/>
- The programmer can now easily use matlab's structures as he wish -mainly to manage optionnal parametres.<br/>
- NOTE : As its names underlines it, the function allocates space for the <a class="el" href="structget_struct.html">getStruct</a> array. You must free it when you do not need it anymore.<br/>
- </p>
-<p>Goal : Transform a <a class="el" href="structget_struct.html">getStruct</a> array into a structure given as a Matlab output.<br/>
- Here is an example of perfectly working code. The function takes a struct as an input and gives the same struct as an output.<br/>
- int n;<br/>
- getStruct* structure=get_structure_malloc(prhs[0], &amp;n);<br/>
- The <a class="el" href="structget_struct.html">getStruct</a> array structure can be modified here set_structure(structure, plhs,0, n);<br/>
- free(structure);<br/>
+ As an example, the option input of the previous Matlab example would become : [{one,1},{two,2}].<br/>
+ The programmer can now easily use matlab's structures as he wish -mainly to manage optional parametres.<br/>
+ <b>NOTE :</b> As its names underlines it, the function allocates space for the <a class="el" href="structget_struct.html">getStruct</a> array. You must free it when you do not need it anymore.<br/>
+ <b>NOTE 2 :</b> The elements of the structure must be double. The programmer has to test with the function <a class="el" href="libmexipol_8h.html#a818bed1ae54cbe668e903a9abbb56d94" title="Error message if the type is not the required one. ">type</a> if it is really the case.<br/>
 </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
     <tr><td class="paramname">nomber_of_channels</td><td>Number of channels of the image. </td></tr>
-    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab.</td></tr>
-    <tr><td class="paramname">structure</td><td>The <a class="el" href="structget_struct.html">getStruct</a> array. </td></tr>
-    <tr><td class="paramname">plhs</td><td>The plhs. </td></tr>
-    <tr><td class="paramname">i</td><td>The output number. </td></tr>
-    <tr><td class="paramname">numb_fields</td><td>The size of the array, i.e. the size of the structure. </td></tr>
+    <tr><td class="paramname">image</td><td>Pointer to the image which is given by Matlab. </td></tr>
   </table>
   </dd>
 </dl>
@@ -365,9 +320,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : The function sends a row-major float array as a usable output within Matlab.<br/>
- Output : None.<br/>
- NOTE : As its names underlines it, the function allocates space for the float array. You must free it when you do not need it anymore.<br/>
+<p>Make a Matlab-usable matrix from a C-made matrix. </p>
+<p><b>Goal :</b> The function creates a row-major float array as a usable output within Matlab. An example is available here : <a class="el" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b" title="Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. ">imageMatlabToC_malloc</a>.<br/>
+ <b>Output :</b> None.<br/>
+ <b>NOTE :</b> As its name underlines it, the function allocates space for the float array. You must free it when you do not need the array anymore.<br/>
  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -413,10 +369,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : None.<br/>
- Other informations : It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable. Example :<br/>
+<p>Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. An alternative version of <a class="el" href="libmexipol_8h.html#a6d4dd67181af024fd30dfc591d5fcb0b" title="Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. ">imageMatlabToC_malloc</a> where the user has to do the memory allocation himself.<br/>
  </p>
+<p><b>Goal :</b> prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ <b>Output :</b> None.<br/>
+ <b>Other informations :</b> It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable instead of being returned by the function itself.<br/>
+ <b>Example :</b><br/>
+</p>
 <p>I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-.<br/>
 </p>
 <p>#include &lt;stdio.h&gt;<br/>
@@ -424,15 +383,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
  #include "libmexipol.h"<br/>
  #include "mex.h"<br/>
 </p>
-<p>void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])<br/>
+<p>void mexFunction( int nlhs, mxArray &lt;em&gt;plhs[], int nrhs, const mxArray *prhs[])<br/>
  {<br/>
  int nx, ny, nz;<br/>
- float *image = imageMatlabToC_malloc(prhs[0],&amp;nx,&amp;ny,&amp;nz);<br/>
+ float *image = (float)malloc(sizeof(float)*nx*ny*nz);<br/>
+ imageMatlabToC(image, nx, ny, nz, prhs, 0);<br/>
  Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);<br/>
  This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.<br/>
  imageCToMatlab(image, nx, ny, nz, plhs,0);<br/>
  free(image);<br/>
- }</p>
+ } </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
@@ -480,8 +440,10 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
- Output : Pointer to the first element of the array. </p>
+<p>Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. </p>
+<p><b>Goal :</b> prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<br/>
+ <b>Output :</b> Pointer to the first element of the array.<br/>
+ <b>NOTE :</b> The matrix can not be made of more than 3 dimensions. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">prhsi</td><td>The element of prhs the user gets the image from. </td></tr>
@@ -518,8 +480,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : The goal is to compare a string to an element of prhs which must be a string.<br/>
- Output : O if the strings are different. 1 if they are the same.<br/>
+<p>Strcmp for a string from Matlab and a char array. </p>
+<p><b>Goal :</b> The goal is to compare a specified string to an element of prhs which must also be a string.<br/>
+ <b>Output :</b> 0 if the strings are differents. 1 if they are the same.<br/>
  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -567,15 +530,16 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : Prints an error message if the number of output or the number of input is not the required one.<br/>
- Output : None.<br/>
+<p>Error message if the nlhs or prhs is not correct. </p>
+<p><b>Goal :</b> Prints an error message if the number of outputs or inputs is not the required one.<br/>
+ <b>Output :</b> None.<br/>
  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">nlhs</td><td>The number of output. </td></tr>
-    <tr><td class="paramname">i</td><td>The number of output required by the algorithm. </td></tr>
-    <tr><td class="paramname">nrhs</td><td>The number of input. </td></tr>
-    <tr><td class="paramname">j</td><td>The number of input required by the algorithm. </td></tr>
+    <tr><td class="paramname">nlhs</td><td>The number of outputs. </td></tr>
+    <tr><td class="paramname">i</td><td>The number of outputs required by the algorithm. </td></tr>
+    <tr><td class="paramname">nrhs</td><td>The number of inputs. </td></tr>
+    <tr><td class="paramname">j</td><td>The number of inputs required by the algorithm. </td></tr>
   </table>
   </dd>
 </dl>
@@ -606,11 +570,78 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Output : none Other informations : The function sets the value of plhs[i] as the one of message. </p>
+<p>char* to an output string. </p>
+<p><b>Output :</b> none<br/>
+ <b>Other informations :</b> The function sets the value of message as the one of plhs[i].<br/>
+ <b> NOTE :</b> The function allocates space for the char. Thus, the user must free it when he does not need it anymore.<br/>
+ <b>Example of use :</b><br/>
+ char* message = set_string(plhs[1]);<br/>
+ (...) Using message (...)<br/>
+ free(message);<br/>
+ </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">message</td><td>The message you want as an output </td></tr>
     <tr><td class="paramname">plhsi</td><td>The element of plhs you want as the previous string. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a7ba6d09740d38588448d89cc68a48866"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void set_structure </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structget_struct.html">getStruct</a> *&#160;</td>
+          <td class="paramname"><em>structure</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const mxArray *&#160;</td>
+          <td class="paramname"><em>plhs</em>[], </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>numb_fields</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>getStruct* array to an output structure. </p>
+<p><b>Goal :</b> Transform a <a class="el" href="structget_struct.html">getStruct</a> array into an output structure to Matlab.<br/>
+ Here is an example of a working code. The function takes a struct as an input and gives the same struct as an output.<br/>
+ ------------&mdash;<br/>
+ int n;<br/>
+ getStruct* structure=get_structure_malloc(prhs[0], &amp;n);<br/>
+ The <a class="el" href="structget_struct.html">getStruct</a> array structure has to be modified here //<br/>
+ set_structure(structure, plhs,0, n);<br/>
+ free(structure);<br/>
+ ------------&mdash;<br/>
+ </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">structure</td><td>The <a class="el" href="structget_struct.html">getStruct</a> array. </td></tr>
+    <tr><td class="paramname">plhs</td><td>The plhs. </td></tr>
+    <tr><td class="paramname">i</td><td>The output number. </td></tr>
+    <tr><td class="paramname">numb_fields</td><td>The size of the array, i.e. the size of the structure. </td></tr>
   </table>
   </dd>
 </dl>
@@ -647,12 +678,13 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
       </table>
 </div><div class="memdoc">
 
-<p>Goal : Prints an error message if the type is not the one required.<br/>
- Output : None.<br/>
+<p>Error message if the type is not the required one. </p>
+<p><b>Goal :</b> Prints an error message if the type is not the required one.<br/>
+ <b>Output :</b> None.<br/>
  </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">type</td><td>type required : must be "string", "double" or "structure" </td></tr>
+    <tr><td class="paramname">type</td><td>type required as a string : must be "string", "double" or "structure" </td></tr>
     <tr><td class="paramname">prhs</td><td>The function's prhs </td></tr>
     <tr><td class="paramname">nrhs</td><td>The element number of prhs which is the number as an input. </td></tr>
     <tr><td class="paramname">j</td><td>The number of input required by the algorithm. </td></tr>
@@ -665,7 +697,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_structure</b> (<a
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 26 2014 00:23:03 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 13:48:07 for Mex-Ipol Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>

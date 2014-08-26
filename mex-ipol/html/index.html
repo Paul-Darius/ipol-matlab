@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.6"/>
-<title>Library Mex-Ipol: Mexipol library Documentation</title>
+<title>Mex-Ipol Library: Mexipol library Documentation</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,7 +22,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">Library Mex-Ipol
+   <div id="projectname">Mex-Ipol Library
    </div>
   </td>
  </tr>
@@ -78,13 +78,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><h1><a class="anchor" id="intro_sec"></a>
-Introduction</h1>
-<p>This is the Mexipol library documentation.</p>
+Presentation</h1>
+<p>This is the Mexipol library documentation, a simple tool to make interfaces between C and Matlab easily.</p>
 <h1><a class="anchor" id="what_sec"></a>
-What is it ?</h1>
+What is this library ?</h1>
+<p>The library presented here has been developped in order to make ipol's C/C++ algorithms easierly usable in Matlab than with classic mex functions.<br/>
+ However, all the mexipol's functions are based on mex functions. Libmexipol simply provides adapted mex-using functions to specific ipol's issues.<br/>
+ Basically those issues are : Error messages, string handling, images handling and structure handling.<br/>
+ Thus, this document's goal is to show any mexipol's function prototype and goal, give basic examples of use, and advise the user on what to do and what not to do with it.<br/>
+</p>
+<h1><a class="anchor" id="how_to_sec2"></a>
+How to use this document ?</h1>
+<p>This document is a dictionnary to understand the specific functions used during the C to Matlab ipol-algorithms conversion process which is presented <a href="yahoo.com">here</a>.<br/>
+ It is not supposed to be read alone, nor supposed to be totally ignored.<br/>
+</p>
+<h1><a class="anchor" id="where_sec"></a>
+Where can I find the Mexipol library ?</h1>
+<p>The library is available <a href="https://github.com/Paul-Darius/ipol-matlab/tree/master/mex-ipol">here</a>, on GitHub.</p>
 <h1><a class="anchor" id="how_to_sec"></a>
-How to use it ?</h1>
-<p>To use this library, just copy the <a class="el" href="libmexipol_8h.html" title="Mexipol&#39;s functions. ">libmexipol.h</a> and libmexipol.c files in your project's directory and add them to your project.</p>
+How to use the library ?</h1>
+<p>To use the library, just copy the <a class="el" href="libmexipol_8h.html" title="Mexipol&#39;s functions. ">libmexipol.h</a> and libmexipol.c files in your project's directory and add them like any other .c/.h file to your project.</p>
+<h1><a class="anchor" id="how_to_sec3"></a>
+Can I find Ipol's algorithms already available for Matlab ?</h1>
+<p>Of course, they are all available <a href="https://github.com/Paul-Darius/ipol-matlab">here</a>.<br/>
+</p>
 <h1><a class="anchor" id="copyright"></a>
 Copyright and License</h1>
 <p>Copyright (c) 2014 Paul-Darius Sarmadi <a href="#" onclick="location.href='mai'+'lto:'+'sar'+'ma'+'dip'+'au'+'lda'+'ri'+'us@'+'ya'+'hoo'+'.f'+'r'; return false;">sarma<span style="display: none;">.nosp@m.</span>dipa<span style="display: none;">.nosp@m.</span>uldar<span style="display: none;">.nosp@m.</span>ius@<span style="display: none;">.nosp@m.</span>yahoo<span style="display: none;">.nosp@m.</span>.fr</a></p>
@@ -94,7 +111,7 @@ Copyright and License</h1>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Aug 26 2014 00:23:03 for Library Mex-Ipol by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue Aug 26 2014 13:48:07 for Mex-Ipol Library by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.6
 </small></address>
