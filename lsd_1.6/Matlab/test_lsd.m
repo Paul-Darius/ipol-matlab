@@ -10,4 +10,5 @@ colormap gray;
 for i=1:size(output_lsd,1)
     plot([output_lsd(i,1),output_lsd(i,3)],[output_lsd(i,2),output_lsd(i,4)]);
 end
+axis ij
 hold off
