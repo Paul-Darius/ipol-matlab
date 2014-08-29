@@ -7,7 +7,6 @@
   Based on lsd_cmd.c, a file developed by Rafael Grompone <grompone@gmail.com>
 
 ----------------------------------------------------------------------------*/
-typedef char* char16_t;
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -15,24 +14,7 @@ typedef char* char16_t;
 #include <ctype.h>
 #include "mex.h"
 #include "../../lsd.h"
-#include "mex.h"
-#ifndef FALSE
-#define FALSE 0
-#endif /* !FALSE */
-#ifndef TRUE
-#define TRUE 1
-#endif /* !TRUE */
 
-/*----------------------------------------------------------------------------*/
-/** Fatal error, print a message to standard-error output and exit.
- */
-static void error(char * msg)
-{
-  fprintf(stderr,"%s\n",msg);
-  exit(EXIT_FAILURE);
-}
-
-}
 /*----------------------------------------------------------------------------*/
 /*                                    Matlab Main Function                    */
 /*----------------------------------------------------------------------------*/
