@@ -1,75 +1,13 @@
 /*
-* Copyright (c) 2009-2011, A. Buades <toni.buades@uib.es>
-* All rights reserved.
-*  
-*
-* Patent warning:
-*
-* This file implements algorithms possibly linked to the patents
-* 
-* # J. Hamilton Jr and J. Adams Jr, “Adaptive color plan interpolation
-* in single sensor color electronic camera,” 1997, US Patent 5,629,734.
-*
-* # D. Cok, “Signal processing method and apparatus for producing
-* interpolated chrominance values in a sampled color image signal”,
-* 1987, US Patent 4,642,678.
-* 
-* # A. Buades, T. Coll and J.M. Morel, Image data processing method by
-* reducing image noise, and camera integrating means for implementing
-* said method, EP Patent 1,749,278 (Feb. 7, 2007). 
-* 
-* This file is made available for the exclusive aim of serving as
-* scientific tool to verify the  soundness and completeness of the
-* algorithm description. Compilation, execution and redistribution
-* of this file may violate patents rights in certain countries.
-* The situation being different for every country and changing
-* over time, it is your responsibility to determine which patent
-* rights restrictions apply to you before you compile, use,
-* modify, or redistribute this file. A patent lawyer is qualified
-* to make this determination.
-* If and only if they don't conflict with any patent terms, you
-* can benefit from the following license terms attached to this
-* file.
-* 
-* License:
-*
-* This program is provided for scientific and educational only:
-* you can use and/or modify it for these purposes, but you are
-* not allowed to redistribute this work or derivative works in
-* source or executable form. A license must be obtained from the
-* patent right holders for any other use.
-*
-*
-*/
-
-/**
- * @mainpage Self Similarity Driven Demosaicking
- *
- * README.txt:
- * @verbinclude README.txt
+ * Copyright (c) 2014, Paul-Darius Sarmadi <paul-darius.sarmadi@telecom-sudparis.eu>
+ * Based on "mosaic.cpp" by Nicolais Limare <nicolas.limare@cmla.ens-cachan.fr>
  */
-
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
-
 #include "libdemosaicking.h"
-
 #include "mex.h"
-
-/**
- * @file   demosaickingIpol.cpp
- * @brief  Main executable file
- *
- * 
- *
- * @author Antoni Buades <toni.buades@uib.es>
- */
-
-
 
 void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {	
@@ -128,8 +66,6 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     {
         mexErrMsgTxt("pattern must be \"RGGB\", \"GRBG\", \"GBRG\" or \"BGGR\"\n");
     }
-
-    /* TIFF RGBA 8bit->float input */
     float* data_in= new float[nx*ny*3];
     int tmpx, tmpy, tmpz;
     for (tmpz=0;tmpz<3;tmpz++)
@@ -155,9 +91,6 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 			*out_ptr = 255;
 		out_ptr++;
     }
-    /* copy alpha channel */
-    //memcpy(data_out + 3 * nx * ny, data_in + 3 * nx * ny,nx * ny * sizeof(float));
-
         mwSize dim = 3;
         const mwSize dims[3]={ny,nx,3};
         plhs[0]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
@@ -168,7 +101,7 @@ void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
                 {
                     pointeur[tmpy+tmpx*ny+tmpz*nx*ny]=(double)data_out[tmpx+tmpy*nx+tmpz*nx*ny];
                 }
-    free(data_out);
-    free(pattern_str);
+        free(data_out);
+        free(pattern_str);
     }
 }

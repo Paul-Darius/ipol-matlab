@@ -95,12 +95,12 @@ int isCorrectString( char* requiredString, mxArray *prhsi);
     \details
     <strong>Output :</strong> Size of the string.<BR><BR>
     <strong>Typical code :</strong><BR>
-    ---------------<BR>
-    char *message = malloc(sizeof(char)*(get_string_length(prhs[X])+1));<BR>
-    message = get_string(prhs[X]);<BR>
-    (...) using the variable message (...)<BR>
-    free(message);<BR>
-    ---------------<BR>
+    @code
+    char *message = malloc(sizeof(char)*(get_string_length(prhs[X])+1));
+    message = get_string(prhs[X]);
+    (...) using the variable message (...)
+    free(message);
+    @endcode
     \param prhsi a string element from prhs
  */
 
@@ -175,22 +175,23 @@ void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArra
     <strong>Example :</strong><BR>
  
     I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-.<BR>
+    @code
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include "libmexipol.h"
+    #include "mex.h"
  
-    #include <stdio.h><BR>
-    #include <stdlib.h><BR>
-    #include "libmexipol.h"<BR>
-    #include "mex.h"<BR>
- 
-    void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])<BR>
-    {<BR>
-        int nx, ny, nz;<BR>
-        float *image = (float*)malloc(sizeof(float)*nx*ny*nz);<BR>
-        imageMatlabToC(image, nx, ny, nz, prhs, 0);<BR>
-        //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);<BR>
-        //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.<BR>
-        imageCToMatlab(image, nx, ny, nz, plhs,0);<BR>
-        free(image);<BR>
+    void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+    {
+        int nx, ny, nz;
+        float *image = (float*)malloc(sizeof(float)*nx*ny*nz);
+        imageMatlabToC(image, nx, ny, nz, prhs, 0);
+        //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
+        //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
+        imageCToMatlab(image, nx, ny, nz, plhs,0);
+        free(image);
     }
+    @endcode
     \param prhsi The element of prhs the user gets the image from.
     \param nomber_of_channels Number of channels of the image.
     \param image Pointer to the image which is given by Matlab.
@@ -218,15 +219,15 @@ typedef struct getStruct getStruct;
     In a shell it is very easy to use optional parameters. However, within Matlab it is largely harder to manage it.<BR>
     A solution is to use matlab's structures. It is very easy to create a structure within Matlab. A name is easily linked to a value.<BR><BR>
     For example in Matlab :<BR>
-    ---------------<BR>
-    >option.one = 1;<BR>
-    >option.two = 2;<BR>
-    >option<BR>
-    -> option=<BR>
-    -> one: 1<BR>
-    -> two: 2<BR>
-    >output=algorithm(input,option)<BR>
-    ---------------<BR><BR>
+    @code
+    >option.one = 1;
+    >option.two = 2;
+    >option
+    -> option=
+    -> one: 1
+    -> two: 2
+    >output=algorithm(input,option)
+    @endcode
     All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.<BR>
     The getStruct structure contains a fieldname and a value.<BR>
     An array of getStruct can contain a full matlab's structure. For example : [{one,1},{two,2}].<BR>
@@ -248,13 +249,13 @@ getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
     \details
     <strong>Goal :</strong> Transform a getStruct array into an output structure to Matlab.<BR>
     Here is an example of a working code. The function takes a struct as an input and gives the same struct as an output.<BR>
-    ---------------<BR>
-    int n;<BR>
-    getStruct* structure=get_structure_malloc(prhs[0], &n);<BR>
-    // The getStruct array structure has to be modified here //<BR>
-    set_structure(structure, plhs,0, n);<BR>
-    free(structure);<BR>
-    ---------------<BR>
+    @code
+    int n;
+    getStruct* structure=get_structure_malloc(prhs[0], &n);
+    // The getStruct array structure has to be modified here //
+    set_structure(structure, plhs,0, n);
+    free(structure);
+    @endcode
     \param structure The getStruct array.
     \param plhs The plhs.
     \param i The output number.
