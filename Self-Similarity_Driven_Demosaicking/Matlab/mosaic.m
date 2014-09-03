@@ -21,7 +21,7 @@ function out=mosaic(image,string)
 % The output is a double matrix.
 % It contains the Bayern pattern mosaic.
 %
-% You can use the output as a test for the demosaic algorithm.
+% You can use the output as a test for the demosaicking algorithm.
 % Type "help ssdd" for more informations.
 %
 % More informations at : http://www.ipol.im/pub/art/2011/bcms-ssdd

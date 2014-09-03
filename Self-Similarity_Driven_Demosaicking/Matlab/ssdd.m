@@ -19,9 +19,7 @@ function out=ssdd(image,string)
 % ========
 %
 % The output is a double matrix.
-% It contains the reconstruction.
-%
-% Type "help ssdd" for more informations.
+% It contains the reconstruction of the image after a mosaicking algorithm.
 %
 % More informations at : http://www.ipol.im/pub/art/2011/bcms-ssdd
 

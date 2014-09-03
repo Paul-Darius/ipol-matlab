@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) 2014, Paul-Darius Sarmadi <paul-darius.sarmadi@telecom-sudparis.eu>
+ * Based on "main.c" by Javier Sánchez Pérez <jsanchez@dis.ulpgc.es>
+ */
 typedef char* char16_t;
 #include "mex.h"
 #include <stdbool.h>
@@ -6,12 +10,6 @@ typedef char* char16_t;
 #include <time.h>
 #include <math.h>
 #include <string.h>
-#ifndef DISABLE_OMP
-//#include <omp.h>
-#endif//DISABLE_OMP
-
-//#include "../../iio.h"
-
 #include "../../tvl1flow_lib.c"
 
 
@@ -25,26 +23,6 @@ typedef char* char16_t;
 #define PAR_DEFAULT_NWARPS  5
 #define PAR_DEFAULT_EPSILON 0.01
 #define PAR_DEFAULT_VERBOSE 0
-
-
-/**
- *
- *  Function to read images using the iio library
- *  It always returns an allocated the image.
- *
- */
-
-/*
-static float *read_image(const char *filename, int *w, int *h)
-{
-	float *f = iio_read_image_float(filename, w, h);
-	if (!f)
-		fprintf(stderr, "ERROR: could not read image from file "
-				"\"%s\"\n", filename);
-	return f;
-}
-
-*/
 
 /**
  *
@@ -65,6 +43,7 @@ static float *read_image(const char *filename, int *w, int *h)
  *   -verbose     switch on/off messages
  *
  */
+
 void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
 	if (!(nlhs==1))

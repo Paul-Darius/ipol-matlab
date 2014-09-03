@@ -1,74 +1,29 @@
 /*
-* Copyright 2012 IPOL Image Processing On Line http://www.ipol.im/
-*
-* This program is free software: you can redistribute it and/or modify
-* it under the terms of the GNU General Public License as published by
-* the Free Software Foundation, either version 3 of the License, or
-* (at your option) any later version.
-*
-* This program is distributed in the hope that it will be useful,
-* but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-* GNU General Public License for more details.
-*
-* You should have received a copy of the GNU General Public License
-* along with this program.  If not, see <http://www.gnu.org/licenses/>.
-*/
+ * Copyright (c) 2014, Paul-Darius Sarmadi <paul-darius.sarmadi@telecom-sudparis.eu>
+ * Based on "demo_mire.cpp" by Yohann Tendero <yohann.tendero@cmla.ens-cachan.fr>
+ */
 
-/**
-* @mainpage Midway InfraRed Equalization (MIRE)
-*
-* README.txt:
-* @verbinclude README.txt
-*/
-
-/**
-* @file demo_MIRE.cpp
-* @brief Columns-artifacts removal main file
-*
-* The input  is 8bits png corrupted with non-unifomity (columns artifacts).
-* The  is processed with a Gaussian-weighted local Midway algorithm.
-* The output is 8bits png
-*
-* @author Yohann Tendero <yohann.tendero@cmla.ens-cachan.fr>
-*/
 #include "mex.h"
 #include <stdio.h>
 #include <stdlib.h>
-//#include <iostream>
-//#include "io_png/io_png.h"
 #include "../../MIRE.h"
 #include "../../borders.h"
 
-/**
-* @fn main(int argc, char **argv)
-* @brief main function
-* @param argc
-* @param **argv : ImNoisy  Noisy (corrupted), gray-level (1 channel) PNG image.
-* ImDenoised denoised  PNG image.
-*
-*/
+
 void mexFunction (int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
-//Check arguments : IN OUT;
-   
-    /*
-    if (argc != 3)
+    if(nlhs!=1)
     {
-        std::cerr << " **************************************** " << std::endl
-        << " **********  MIRE  ******************************** " << std::endl
-        << " ************************************************** " << std::endl
-        << "Usage: " << argv[0] << " ImNoisy.png ImDenoised.png " << std::endl
-        << "Input" << std::endl
-        << "ImNoisy: columns artifacts, gray (1 channel),  PNG. " << std::endl
-        << "Output" << std::endl
-        << "ImDenoised: denoised  in PNG. " << std::endl
-        << " ************************************************** " << std::endl
-        << "****************  Yohann Tendero, 2011  *********** " << std::endl
-        << " ************************************************** " << std::endl;
-        return 1;
+        mexErrMsgTxt("One matrix is needed as an output");
     }
-     */
+    if(nrhs!=1)
+    {
+        mexErrMsgTxt("One double matrix is needed as an input");
+    }
+    if(!mxIsDouble(prhs[0]))
+    {
+        mexErrMsgTxt("The input must be a double typed matrix");
+    }
     
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////// CONSTANT PARAMETER DEFINITION////////////////////////
