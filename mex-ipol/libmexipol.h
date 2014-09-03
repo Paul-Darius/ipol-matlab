@@ -51,7 +51,7 @@ typedef char* char16_t;
 /* input/output handling */
 
 
-/*! \fn void numberio(int nlhs, int i, int nrhs, int j)
+/*! \fn void number_io(int nlhs, int i, int nrhs, int j)
     \brief Error message if the nlhs or prhs is not correct.
     \details
      <strong>Goal :</strong> Prints an error message if the number of outputs or inputs is not the required one.<BR>
@@ -61,9 +61,9 @@ typedef char* char16_t;
     \param nrhs The number of inputs.
     \param j The number of inputs required by the algorithm.
  */
-void numberio(int nlhs, int i, int nrhs, int j);
+void number_io(int nlhs, int i, int nrhs, int j);
 
-/*! \fn void type(char *type, const mxArray *prhs[], int i)
+/*! \fn void is_type(char *type, const mxArray *prhs[], int i)
     \brief Error message if the type is not the required one.
     \details
      <strong>Goal :</strong> Prints an error message if the type is not the required one.<BR>
@@ -74,9 +74,9 @@ void numberio(int nlhs, int i, int nrhs, int j);
     \param j The number of input required by the algorithm.
  */
 
-void type(char *type, const mxArray *prhs[], int i);
+void is_type(char *type, const mxArray *prhs[], int i);
 
-/*! \fn int isCorrectString( char* requiredString, mxArray *prhsi)
+/*! \fn int is_correct_string( char* requiredString, mxArray *prhsi)
     \brief Strcmp for a string from Matlab and a char array.
     \details
     <strong>Goal :</strong> The goal is to compare a specified string to an element of prhs which must also be a string.<BR>
@@ -135,7 +135,43 @@ void set_string(char* message, mxArray* plhsi);
 /* Array functions */
 
 
-/*! \fn float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)
+/*! \fn void image_matlab_to_c(mxArray *prhsi, int number_of_channels, float* image)
+ \brief Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. An alternative version of ::imageMatlabToC_malloc where the user has to do the memory allocation himself.<BR>
+ \details
+ <strong>Goal :</strong> prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
+ <strong>Output :</strong> None.<BR>
+ <strong>Other informations :</strong> It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable instead of being returned by the function itself.<BR>
+ <strong>Example :</strong><BR>
+ 
+ I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-.<BR>
+ @code
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "libmexipol.h"
+ #include "mex.h"
+ 
+ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
+ {
+ int nx, ny, nz;
+ *nx = mxGetDimensions(prhs[0])[0];
+ *ny = mxGetDimensions(prhs[0])[1];
+ *nz = mxGetDimensions(prhs[0])[2];
+ float *image = (float*)malloc(sizeof(float)*nx*ny*nz);
+ image_matlab_to_c(image, nx, ny, nz, prhs, 0);
+ //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
+ //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
+ image_c_to_matlab(image, nx, ny, nz, plhs,0);
+ free(image);
+ }
+ @endcode
+ \param prhsi The element of prhs the user gets the image from.
+ \param nomber_of_channels Number of channels of the image.
+ \param image Pointer to the image which is given by Matlab.
+ */
+
+void image_matlab_to_c(mxArray *prhsi, int number_of_channels, float* image);
+
+/*! \fn float* image_matlab_to_c_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)
     \brief Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images.
     \details
     <strong>Goal :</strong> prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
@@ -147,9 +183,9 @@ void set_string(char* message, mxArray* plhsi);
     \param nz Pointer to the number of channels.
  */
 
-float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
+float* image_matlab_to_c_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
 
-/*! \fn void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
+/*! \fn void image_c_to_matlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
     \brief Make a Matlab-usable matrix from a C-made matrix.
     \details
     <strong>Goal :</strong> The function creates a row-major float array as a usable output within Matlab. An example is available here : ::imageMatlabToC_malloc.<BR>
@@ -164,55 +200,23 @@ float* imageMatlabToC_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
  */
 
 
-void imageCToMatlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i);
-
-/*! \fn void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image)
-    \brief Make a matrix -which is a Matlab input- as a usable input for any C-made algorithm. Mostly used for images. An alternative version of ::imageMatlabToC_malloc where the user has to do the memory allocation himself.<BR>
-    \details
-    <strong>Goal :</strong> prhsi is column-major image because of matlab's norm. The function creates a row-major image containing the same informations. Those are used by a majority of C-programs.<BR>
-    <strong>Output :</strong> None.<BR>
-    <strong>Other informations :</strong> It is a modified version of imageMatlabToC_malloc which is a void type function. The result is returned within the image variable instead of being returned by the function itself.<BR>
-    <strong>Example :</strong><BR>
- 
-    I want to take an image from Matlab -the input argument- and send it back to Matlab -the output argument-.<BR>
-    @code
-    #include <stdio.h>
-    #include <stdlib.h>
-    #include "libmexipol.h"
-    #include "mex.h"
- 
-    void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
-    {
-        int nx, ny, nz;
-        float *image = (float*)malloc(sizeof(float)*nx*ny*nz);
-        imageMatlabToC(image, nx, ny, nz, prhs, 0);
-        //Here, the programmer has to use his algorithm with the pointer "image" : algorithm(image);
-        //This part is only necessary if the programmer wants to get back the image as an output. For example if he made modifications on it.
-        imageCToMatlab(image, nx, ny, nz, plhs,0);
-        free(image);
-    }
-    @endcode
-    \param prhsi The element of prhs the user gets the image from.
-    \param nomber_of_channels Number of channels of the image.
-    \param image Pointer to the image which is given by Matlab.
- */
-void imageMatlabToC(mxArray *prhsi, int number_of_channels, float* image);
+void image_c_to_matlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i);
 
 /* Structure functions */
 
 /*!
-    \struct getStruct
+    \struct matlab_struct
     An array of getStruct can contain a full matlab's double structure. For example : [{one,1},{two,2}].
     For more informations, take a look at ::get_structure_malloc.
  */
-struct getStruct {
+struct matlab_struct {
 	char* name;/*!< Name of the field. */
 	double value;/*!< Double value within the field. */
 };
 
 typedef struct getStruct getStruct;
 
-/*! \fn getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields)
+/*! \fn matlab_struct* get_structure_malloc(const mxArray* prhsi, int *numb_fields)
     \brief A necessary array vision of the structure : a Matlab structure to getStruct array convertor
     \details
     <strong>Goal :</strong> How to deal with the various and numerous parameters the user may need in order to use his algorithm properly ?<BR>
@@ -229,12 +233,12 @@ typedef struct getStruct getStruct;
     >output=algorithm(input,option)
     @endcode
     All the fields do not have to be explicited, and any of the optional values can be declared in any order. This is a good way to manage optional parameters.<BR>
-    The getStruct structure contains a fieldname and a value.<BR>
+    The matlab_struct structure contains a fieldname and a value.<BR>
     An array of getStruct can contain a full matlab's structure. For example : [{one,1},{two,2}].<BR>
-    Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a getStruct array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<BR>
+    Thus, the get_structure_malloc function has been designed to take a structure from matlab as an input, and give a matlab_struct array as an output. The mex-programmer can then easily deal with all the options the user choose, and with those the user does not choose.<BR>
     As an example, the option input of the previous Matlab example would become : [{one,1},{two,2}].<BR>
-    The programmer can now easily use matlab's structures as he wish -mainly to manage optional parametres.<BR>
-    <strong>NOTE :</strong> As its names underlines it, the function allocates space for the getStruct array. You must free it when you do not need it anymore.<BR>
+    The programmer can now easily use matlab's structures as he wishes -mainly to manage optional parameters.<BR>
+    <strong>NOTE :</strong> As its names underlines it, the function allocates space for the matlab_struct array. You must free it when you do not need it anymore.<BR>
     <strong>NOTE 2 :</strong> The elements of the structure must be double. The programmer has to test with the function ::type if it is really the case.<BR>
  
     \param prhsi The element of prhs the user gets the image from.
@@ -242,24 +246,24 @@ typedef struct getStruct getStruct;
     \param image Pointer to the image which is given by Matlab.
  */
 
-getStruct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
+matlab_struct* get_structure_malloc(const mxArray* prhsi, int *numb_fields);
 
 /*! \fn void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields)
     \brief getStruct* array to an output structure.
     \details
-    <strong>Goal :</strong> Transform a getStruct array into an output structure to Matlab.<BR>
+    <strong>Goal :</strong> Transform a matlab_struct array into an output structure to Matlab.<BR>
     Here is an example of a working code. The function takes a struct as an input and gives the same struct as an output.<BR>
     @code
     int n;
-    getStruct* structure=get_structure_malloc(prhs[0], &n);
-    // The getStruct array structure has to be modified here //
+    matlab_struct* structure=get_structure_malloc(prhs[0], &n);
+    // The matlab_struct array structure has to be modified here //
     set_structure(structure, plhs,0, n);
     free(structure);
     @endcode
-    \param structure The getStruct array.
+    \param structure The matlab_struct array.
     \param plhs The plhs.
     \param i The output number.
     \param numb_fields The size of the array, i.e. the size of the structure.
  */
 
-void set_structure(getStruct* structure, const mxArray* plhs[], int i, int numb_fields);
+void set_structure(matlab_struct* structure, const mxArray* plhs[], int i, int numb_fields);

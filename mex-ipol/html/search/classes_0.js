@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getstruct',['getStruct',['../structget_struct.html',1,'']]]
+  ['matlab_5fstruct',['matlab_struct',['../structmatlab__struct.html',1,'']]]
 ];
