@@ -16,20 +16,68 @@ function out=tvl1(A,B,option)
 %
 % You can change the default options as you wish.
 % Just use a structure containing them or the ones you need.
-% For example, if you want a scale equals to one and a sigma_coef equals to 0.7, type the following command :
-%   option.scale=1;
-%   option.sigma_coef=0.8;
-%   out = LSD(A,option)
+% For example, if you want tau being equals to 0.1 and a lambda equals to 0.7, type the following command :
+%   option.tau=0.1;
+%   option.lambda=0.7;
+%   out = TVL1(A,B,option)
 %
 % You can name your structure as you want. However its components have to respect some rules :
 %
-% SCALE :
-%   name as a component of the optional structure : scale
+% TAU :
+%   name as a component of the optional structure : tau
 %   type : double
-%   default value : 0.8
+%   default value : 0.25
+%   minimum value : 0.0
+%   maximum value : 0.25
+%   Time step in the numerical scheme
+%
+% LAMBDA :
+%   name as a component of the optional structure : lambda
+%   type : double
+%   default value : 0.15
 %   minimum value : 0.0
 %   maximum value : -
-%   Scale image by Gaussian filter before processing.
+%   Data term weight parameter
+%
+% THETA :
+%   name as a component of the optional structure : theta
+%   type : double
+%   default value : 0.3
+%   minimum value : 0.0
+%   maximum value : -
+%   Tightness parameter
+%
+% NSCALES :
+%   name as a component of the optional structure : nscales
+%   type : double
+%   default value : 100
+%   minimum value : 0.0
+%   maximum value : -
+%   Number of scales in the pyramidal structure
+%
+% ZFACTOR :
+%   name as a component of the optional structure : zfactor
+%   type : double
+%   default value : 0.5
+%   minimum value : 0.0
+%   maximum value : -
+%   Downsampling factor for creating the scales
+%
+% NWARPS :
+%   name as a component of the optional structure : nwarps
+%   type : double
+%   default value : 5
+%   minimum value : 0.0
+%   maximum value : -
+%   Number of warps per scales
+%
+% EPSILON :
+%   name as a component of the optional structure : epsilon
+%   type : double
+%   default value : 0.01
+%   minimum value : 0.0
+%   maximum value : -
+%   Stopping criterion threshold for the iterative process
 %
 % RETURNED VALUE :
 % ================

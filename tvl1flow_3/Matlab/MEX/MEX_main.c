@@ -14,7 +14,6 @@ typedef char* char16_t;
 
 
 #define PAR_DEFAULT_OUTFLOW "flow.flo"
-#define PAR_DEFAULT_NPROC   0
 #define PAR_DEFAULT_TAU     0.25
 #define PAR_DEFAULT_LAMBDA  0.15
 #define PAR_DEFAULT_THETA   0.3
@@ -22,27 +21,7 @@ typedef char* char16_t;
 #define PAR_DEFAULT_ZFACTOR 0.5
 #define PAR_DEFAULT_NWARPS  5
 #define PAR_DEFAULT_EPSILON 0.01
-#define PAR_DEFAULT_VERBOSE 0
-
-/**
- *
- *  Main program:
- *   This program reads the following parameters from the console and
- *   then computes the optical flow:
- *   -nprocs      number of threads to use (OpenMP library)
- *   -I0          first image
- *   -I1          second image
- *   -tau         time step in the numerical scheme
- *   -lambda      data term weight parameter
- *   -theta       tightness parameter
- *   -nscales     number of scales in the pyramidal structure
- *   -zfactor     downsampling factor for creating the scales
- *   -nwarps      number of warps per scales
- *   -epsilon     stopping criterion threshold for the iterative process
- *   -out         name of the output flow field
- *   -verbose     switch on/off messages
- *
- */
+#define PAR_DEFAULT_VERBOSE 1
 
 void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 {
@@ -56,7 +35,6 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     }
 
 	int i = 1;
-	int   nproc   = PAR_DEFAULT_NPROC;
 	float tau     = PAR_DEFAULT_TAU;
 	float lambda  = PAR_DEFAULT_LAMBDA;
 	float theta   = PAR_DEFAULT_THETA;
@@ -71,81 +49,193 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
       double* ptr;
       for( tmp=0; tmp<mxGetNumberOfFields(prhs[2]);tmp++)
       {
-        if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"nproc")==0)
+        if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"tau")==0)
         {
           if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
           {
-            mexErrMsgTxt("A double argument was expected.");
+              mexErrMsgTxt("A double argument was expected.");
           }
           if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
           {
             mexErrMsgTxt("Only one value was expected.");
           }
           ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
-          nproc=ptr[0];
-          //else
-          //{
-          //  mexErrMsgTxt("The nproc value is not acceptable. For more information, type \"help tvl1\"");
-          //}
+          if (ptr[0]> 0 && ptr[0]< 0.25)
+          {
+            tau=ptr[0];
+          }
+          else
+          {
+              mexErrMsgTxt("The tau value is not acceptable. For more information, type \"help tvl1\"");
+          }
         }
+          if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"lambda")==0)
+          {
+              if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
+              {
+                  mexErrMsgTxt("A double argument was expected.");
+              }
+              if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
+              {
+                  mexErrMsgTxt("Only one value was expected.");
+              }
+              ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
+              if (ptr[0]>0)
+              {
+                  lambda=ptr[0];
+              }
+              else
+              {
+                  mexErrMsgTxt("The lambda value is not acceptable. For more information, type \"help tvl1\"");
+              }
+          }
+          if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"theta")==0)
+          {
+              if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
+              {
+                  mexErrMsgTxt("A double argument was expected.");
+              }
+              if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
+              {
+                  mexErrMsgTxt("Only one value was expected.");
+              }
+              ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
+              if (ptr[0]>0)
+              {
+                  theta=ptr[0];
+              }
+              else
+              {
+                  mexErrMsgTxt("The theta value is not acceptable. For more information, type \"help tvl1\"");
+              }
+          }
+          if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"nscales")==0)
+          {
+              if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
+              {
+                  mexErrMsgTxt("A double argument was expected.");
+              }
+              if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
+              {
+                  mexErrMsgTxt("Only one value was expected.");
+              }
+              ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
+              if (ptr[0]>0)
+              {
+                  nscales=ptr[0];
+              }
+              else
+              {
+                  mexErrMsgTxt("The nscales value is not acceptable. For more information, type \"help tvl1\"");
+              }
+          }
+          
+          if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"zfactor")==0)
+          {
+              if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
+              {
+                  mexErrMsgTxt("A double argument was expected.");
+              }
+              if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
+              {
+                  mexErrMsgTxt("Only one value was expected.");
+              }
+              ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
+              if (ptr[0]>0)
+              {
+                  zfactor=ptr[0];
+              }
+              else
+              {
+                  mexErrMsgTxt("The zfactor value is not acceptable. For more information, type \"help tvl1\"");
+              }
+          }
+          
+          if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"nwarps")==0)
+          {
+              if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
+              {
+                  mexErrMsgTxt("A double argument was expected.");
+              }
+              if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
+              {
+                  mexErrMsgTxt("Only one value was expected.");
+              }
+              ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
+              if (ptr[0]>0)
+              {
+                  nwarps=ptr[0];
+              }
+              else
+              {
+                  mexErrMsgTxt("The nwarps value is not acceptable. For more information, type \"help tvl1\"");
+              }
+          }
+          
+          if ( strcmp(mxGetFieldNameByNumber(prhs[2],tmp),"epsilon")==0)
+          {
+              if (!(mxIsDouble(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0)))))
+              {
+                  mexErrMsgTxt("A double argument was expected.");
+              }
+              if (mxGetNumberOfElements((mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],0))))!=1)
+              {
+                  mexErrMsgTxt("Only one value was expected.");
+              }
+              ptr=mxGetPr(mxGetField(prhs[2],0,mxGetFieldNameByNumber(prhs[2],tmp)));
+              if (ptr[0]>0)
+              {
+                  epsilon=ptr[0];
+              }
+              else
+              {
+                  mexErrMsgTxt("The epsilon value is not acceptable. For more information, type \"help tvl1\"");
+              }
+          }
+          
       }
 	}
 
-
-	if (nproc < 0) {
-		nproc = PAR_DEFAULT_NPROC;
-		if (verbose) fprintf(stderr, "warning: "
-				"nproc changed to %d\n", nproc);
-	}
 	if (tau <= 0 || tau > 0.25) {
 		tau = PAR_DEFAULT_TAU;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf("warning: "
 				"tau changed to %g\n", tau);
 	}
 	if (lambda <= 0) {
 		lambda = PAR_DEFAULT_LAMBDA;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf("warning: "
 				"lambda changed to %g\n", lambda);
 	}
 	if (theta <= 0) {
 		theta = PAR_DEFAULT_THETA;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf("warning: "
 				"theta changed to %g\n", theta);
 	}
 	if (nscales <= 0) {
 		nscales = PAR_DEFAULT_NSCALES;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf("warning: "
 				"nscales changed to %d\n", nscales);
 	}
 	if (zfactor <= 0 || zfactor >= 1) {
 		zfactor = PAR_DEFAULT_ZFACTOR;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf( "warning: "
 				"zfactor changed to %g\n", zfactor);
 	}
 	if (nwarps <= 0) {
 		nwarps = PAR_DEFAULT_NWARPS;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf( "warning: "
 				"nwarps changed to %d\n", nwarps);
 	}
 	if (epsilon <= 0) {
 		epsilon = PAR_DEFAULT_EPSILON;
-		if (verbose) fprintf(stderr, "warning: "
+		if (verbose) mexPrintf("warning: "
 				"epsilon changed to %f\n", epsilon);
 	}
-/*
-#ifndef DISABLE_OMP
-	if (nproc > 0)
-		omp_set_num_threads(nproc);
-#endif//DISABLE_OMP
-*/
-
-   // TODO: CHECK THAT number of Channels is 1!!!
-
+    
 	int    nx = mxGetN(prhs[0]);
 	int    ny = mxGetM(prhs[0]);
 	int    nx2 = mxGetN(prhs[1]);
 	int    ny2 = mxGetM(prhs[1]);
-	mexPrintf("%d %d", mxGetN(prhs[0]), nx);
 	float *I0=malloc(nx*ny*sizeof(float));
 	int tmpx, tmpy;
    for (tmpx=0; tmpx<nx; tmpx++) 
@@ -166,25 +256,19 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
 		if (verbose)
 		{
 			mexPrintf(
-				"nproc=%d tau=%f lambda=%f theta=%f nscales=%d "
+				"tau=%f lambda=%f theta=%f nscales=%d "
 				"zfactor=%f nwarps=%d epsilon=%g\n",
-				nproc, tau, lambda, theta, nscales,
+				tau, lambda, theta, nscales,
 				zfactor, nwarps, epsilon);
 		}
 
 		float *u = xmalloc(2 * nx * ny * sizeof(*u));
 		float *v = u + nx*ny;
 
-		mexPrintf("%d %d\n", nx, nx2);
-		mexPrintf("%d %d\n", ny, ny2);
-
 		Dual_TVL1_optic_flow_multiscale(
 				I0, I1, u, v, nx, ny, tau, lambda, theta,
 				nscales, zfactor, nwarps, epsilon, verbose
 		);
-
-
-		//iio_save_image_float_split(outfile, u, nx, ny, 2);
 		mwSize dim = 3;
     	const mwSize dims[3]={ny,nx,2};
     	plhs[0]=mxCreateNumericArray(dim, dims,mxDOUBLE_CLASS,mxREAL);
