@@ -144,7 +144,7 @@ void set_string(char* message, mxArray* plhsi);
     \param nz Pointer to the number of channels.
  */
 
-float* image_matlab_to_c_malloc(mxArray *prhsi, int *nx, int *ny, int *nz);
+float* image_matlab_to_c_malloc(const mxArray *prhsi, int *nx, int *ny, int *nz);
 
 /*! \fn void image_c_to_matlab(float* image, int nx, int ny, int number_of_channels, mxArray *plhs[], int i)
     \brief Make a Matlab-usable matrix from a C-made matrix.
@@ -193,7 +193,7 @@ void image_c_to_matlab(float* image, int nx, int ny, int number_of_channels, mxA
     \param nomber_of_channels Number of channels of the image.
     \param image Pointer to the image which is given by Matlab.
  */
-void image_matlab_to_c(mxArray *prhsi, int number_of_channels, float* image);
+void image_matlab_to_c(const mxArray *prhsi, int number_of_channels, float* image);
 
 /* Structure functions */
 

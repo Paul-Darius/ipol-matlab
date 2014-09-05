@@ -119,7 +119,7 @@ void set_string(char* message, mxArray* plhsi)
 
 /* Array functions */
 
-void image_matlab_to_c(mxArray *prhsi, int number_of_channels, float* image)
+void image_matlab_to_c(const mxArray *prhsi, int number_of_channels, float* image)
 {
     if (number_of_channels<1)
     {
@@ -156,7 +156,7 @@ void image_matlab_to_c(mxArray *prhsi, int number_of_channels, float* image)
     }
 }
 
-float* image_matlab_to_c_malloc(mxArray *prhsi, int *nx, int *ny, int *nz)
+float* image_matlab_to_c_malloc(const mxArray *prhsi, int *nx, int *ny, int *nz)
 {
     int num=mxGetNumberOfDimensions(prhsi);
     *nx = mxGetDimensions(prhsi)[0];
