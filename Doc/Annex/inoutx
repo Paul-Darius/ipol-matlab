@@ -1,0 +1,28 @@
+author : full name
+license : informations concerning the license the user chose for his article
+main function’s prototype : type algorithm(type1 input1, …, typeM inputM, typeM+1 optional_input1, …, typeM+N optional_inputN, typeM+N+1 output1, … type M+N+O outputO);
+general dependencies :
+	stdio.h //For example
+	stdlib.h //For example
+	string.h //For example
+	(…)
+specific dependencies following the order shown page 10 of the main document :
+	file1.h //For example
+	src/file2.h //For example
+	(…)
+
+compulsory inputs :
+	type1 input1
+	type2 input2
+	(…)
+	typeM inputM
+optional inputs :
+	typeM+1 optional_input1
+	typeM+2 optional_input2
+	(…)
+	typeM+N optional_inputN
+outputs :
+	typeM+N+1 output1
+	typeM+N+2 output2
+	(…)
+	typeM+N+O outputO
