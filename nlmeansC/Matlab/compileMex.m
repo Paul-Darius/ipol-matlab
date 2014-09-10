@@ -1,1 +1,1 @@
-mex -v CFLAGS="$CFLAGS -std=c99" -O MEX_nlmeans.cpp libmexipol.c ../libdenoising.cpp ../libauxiliar.cpp ../mt19937ar.c
+mex MEX/MEX_nlmeans.cpp libmexipol.c ../libdenoising.cpp ../libauxiliar.cpp ../mt19937ar.c
