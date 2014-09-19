@@ -44,31 +44,39 @@ function out=lsd(image,option)
 %   minimum value : 0.0
 %   maximum value : 180.0
 %   Gradient angle tolerance in degrees.
-% LOG_EPS : 
+% DETECTION THRESHOLD : 
 %   name as a component of the optional structure : log_eps
 %   type : double	
 %   default value : 0.0
 %   minimum value : -
 %   maximum value : -
 %   Detection threshold, -log10(max. NFA)
-% DENSITY_TH : 
-%   name as a component of the optional structure : scale
+% DENSITY : 
+%   name as a component of the optional structure : density_th
 %   type : double	
 %   default value : 0.7
 %   minimum value : 0.0
 %   maximum value : 1.0
 %   Minimal density of region points in a rectangle to be accepted.
-% N_BINS : 
+% NUMBER OF BINS : 
 %   name as a component of the optional structure : n_bins
-%   type : integer	
+%   type : integer
 %   default value : 1024
 %   minimum value : 1
 %   maximum value : -
 %   Number of bins in 'ordering' of gradient modulus.
 %
 %   RETURNED VALUE :
-%   
+%   ================
 %
+%   The returned value is a matrix.
+%   Each row represents a segment.
+%   The first column contains x1
+%   The second column contains y1
+%   The third column contains x2
+%   The fourth column contains y2
+%   The three last columns contain other informations available on the following adress :
+%   http://www.ipol.im/pub/art/2012/gjmr-lsd/
     if (~exist('option', 'var'))
         out=MEX_lsd_cmd(image);
     else
