@@ -1,17 +1,18 @@
-######################################################
-# Welcome to the matlab version of the LSD algorithm #
-######################################################
+## Matlab version of the LSD algorithm
 
+### LSD Program :
 
-#####################################################
-# LSD PROGRAM :                                     #
-#####################################################
-# If you want to use the lsd program :
-# Go to the current directory with Matlab
-# Within Matlab, type :
+If you want to use the lsd program :
+- Go to the current directory with Matlab
+- Within Matlab, type :
 
-compileMex
+>compileMex
 
-# You can now use the function lsd within matlab
+You can now use the function lsd within matlab
 
-# Paul-Darius Sarmadi - July 2014
+Type :
+  > help lsd  
+
+in Matlab to understand how to use it.  
+  
+*Paul-Darius Sarmadi - July 2014*
