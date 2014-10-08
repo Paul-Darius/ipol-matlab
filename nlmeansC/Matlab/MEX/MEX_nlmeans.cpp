@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../libmexipol.h"
+extern "C" {
+#include "libmexipol.h"
+}
 #include "../../libdenoising.h"
 
 void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
