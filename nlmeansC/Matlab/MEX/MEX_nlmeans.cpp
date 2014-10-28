@@ -17,8 +17,8 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     float *d_v = image_matlab_to_c_malloc(prhs[0], &nx, &ny, &nc);
     
     // variables
-    int d_w = (int) nx;
-    int d_h = (int) ny;
+    int d_w = (int) ny;
+    int d_h = (int) nx;
     int d_c = (int) nc;
     if (d_c == 2) {
         d_c = 1;    // we do not use the alpha channel
@@ -42,8 +42,8 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
     }
     
     // add noise
-    float* pointer = (float*)mxGetData(prhs[1]);
-    float fSigma = pointer[0];
+    double* pointer = mxGetPr(prhs[1]);
+    float fSigma = (float)pointer[0];
     float *noisy = new float[d_whc];
     for (int i=0; i < d_c; i++) {
         fiAddNoise(&d_v[i * d_wh], &noisy[i * d_wh], fSigma, i, d_wh);
