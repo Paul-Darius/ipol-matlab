@@ -170,7 +170,7 @@ float* image_matlab_to_c_malloc(const mxArray *prhsi, int *nx, int *ny, int *nz)
         {
             for (tmpy=0; tmpy<*ny; tmpy++)
             {
-                image[tmpx+tmpy*(*nx)+tmpz*(*nx)*(*ny)] = (float)(mxGetPr(prhsi))[tmpy+tmpx*(*ny)+tmpz*(*nx)*(*ny)];
+                image[tmpy+tmpx*(*ny)+tmpz*(*nx)*(*ny)] = (float)(mxGetPr(prhsi))[tmpy*(*nx)+tmpx+tmpz*(*nx)*(*ny)];
             }
         }
     }
