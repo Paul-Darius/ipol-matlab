@@ -135,7 +135,7 @@ void image_matlab_to_c(const mxArray *prhsi, int number_of_channels, float* imag
             int tmpx, tmpy;
             for (tmpx=0; tmpx<nx; tmpx++)
                 for (tmpy=0; tmpy<ny; tmpy++)
-                    image[tmpy+tmpx*(*ny)] = (float)(mxGetPr(prhsi))[tmpy*(*nx)+tmpx];
+                    image[tmpy+tmpx*(ny)] = (float)(mxGetPr(prhsi))[tmpy*(nx)+tmpx];
         }
         else if (number_of_channels>1)
         {
@@ -148,7 +148,7 @@ void image_matlab_to_c(const mxArray *prhsi, int number_of_channels, float* imag
                 {
                     for (tmpy=0; tmpy<ny; tmpy++)
                     {
-                        image[tmpy+tmpx*(*ny)+tmpz*(*nx)*(*ny)] = (float)(mxGetPr(prhsi))[tmpy*(*nx)+tmpx+tmpz*(*nx)*(*ny)];
+                        image[tmpy+tmpx*(ny)+tmpz*(nx)*(ny)] = (float)(mxGetPr(prhsi))[tmpy*(nx)+tmpx+tmpz*(nx)*(ny)];
                     }
                 }
             }
