@@ -182,8 +182,8 @@ void mexFunction( int nlhs, mxArray *plhs[], int nrhs, const mxArray *prhs[])
       }
     }
       double * image=mxGetPr(prhs[0]);
-      int X=mxGetN(prhs[0]);
-      int Y=mxGetM(prhs[0]);
+      int X=mxGetM(prhs[0]);
+      int Y=mxGetN(prhs[0]);
       double * segs;
       int n;
       int dim = 7;
